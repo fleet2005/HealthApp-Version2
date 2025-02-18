@@ -1,0 +1,26 @@
+html, body {
+    height: 100%;
+    margin: 0; 
+}
+
+.login-page {
+
+    background: url("../../public/assets/Background.png");
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items : center;
+    justify-content: center;
+
+}
+ 
+.login-box {
+
+    background: linear-gradient(to bottom, rgb(52, 186, 164), white);  
+    width: 25vw;   
+    height: 35vw; 
+    margin: 20px;   
+    display: flex;
+    align-items: center;       
+    border-radius: 10px;       
+}
