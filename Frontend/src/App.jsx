@@ -1,4 +1,5 @@
 import LoginPage from './LoginPage.jsx'
+import HomePage from './HomePage.jsx';
 
 //Reason: JSX Differentiation
 // Uppercase components (e.g., <LoginPage />) are treated as React components.
@@ -8,7 +9,8 @@ function App()
 {
     return (
         <>
-            <LoginPage/>
+            <HomePage/>
+            {/* <LoginPage/> */}
         </>
     );
 }
