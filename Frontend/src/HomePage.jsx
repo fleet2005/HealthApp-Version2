@@ -1,6 +1,14 @@
-import "./css/homePage.css"
+import { useNavigate } from "react-router-dom";
+import "./css/homePage.css";
 
 const HomePage = () => {
+  const navigate = useNavigate();   
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");  
+    navigate("/");  
+  };
+
   return (
       <div className="header">
         <nav className="navbar">
@@ -8,13 +16,15 @@ const HomePage = () => {
             <span style={{marginRight: '1vw'}}> HealthApp </span>
 
           <ul className="Items">
-            <li><a href="/">Overview</a></li>
-            <li><a href="/">Exercise Monitoring</a></li>
-            <li><a href="/">BMI Calculator</a></li>
-            <li><a href="/">Nutrient Tracking</a></li>
+            <li><a href="">Overview</a></li>
+            <li><a href="">Exercise Monitoring</a></li>
+            <li><a href="">BMI Calculator</a></li>
+            <li><a href="">Nutrient Tracking</a></li>
           </ul>
 
-          <span style={{marginLeft : "3vw", fontSize :"1.5vw"}}><a href="/">Logout</a></span>
+          <span style={{marginLeft : "3vw", fontSize :"1.5vw"}}>
+            <a href="/" onClick={handleLogout}>Logout</a>  
+          </span>
         </nav>
       </div>
   );
