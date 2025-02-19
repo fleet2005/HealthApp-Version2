@@ -1,15 +1,27 @@
 const asyncHandler = require("express-async-handler");
 const signupmodel = require("./models/UserLoginSchema.js");
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+
 
 const signin = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
 
     const document = await signupmodel.findOne({ email });
 
-    if (document && await bcrypt.compare(password, document.password)) {
-        res.json({"sts":"true"});
-    } else {
+    if (document && await bcrypt.compare(password, document.password)) 
+    {
+        const accessToken = jwt.sign({
+            user : {
+                email : document.email,
+            },
+        }, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "1m"});
+
+        res.status(200).json({accessToken}); 
+    } 
+
+    else 
+    {
         res.status(400).json({"sts":"false"});
     }
 });
