@@ -2,6 +2,7 @@ const asyncHandler = require("express-async-handler");
 const signupmodel = require("./models/UserLoginSchema.js");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const nutrientModel = require("./models/NutrientSchema.js");
 
 
 const signin = asyncHandler(async (req, res) => {
@@ -54,4 +55,20 @@ const signup = asyncHandler(async (req, res) => {
     res.status(200).json({"sts": "Registered Successfully"});
 });
 
-module.exports = { signin, signup };
+const nutrient = asyncHandler(async (req, res) => {
+    try {
+      const { foodName } = req.query;  // Assuming you're passing the food name as a query parameter
+      
+      // If foodName is provided, perform a partial match query
+      const nutrientData = await nutrientModel.find({
+        food_name: { $regex: foodName, $options: 'i' } // Case-insensitive partial match
+      });
+  
+      res.status(200).json(nutrientData);  // Sending the matched data as the response
+    } catch (error) {
+      res.status(500).json({ message: 'Error fetching nutrient data', error: error.message });
+    }
+  });
+  
+
+module.exports = { signin, signup, nutrient};

@@ -11,16 +11,32 @@ html, body {
     display: flex;
     align-items : center;
     justify-content: center;
-
 }
  
 .login-box {
 
     background: linear-gradient(to bottom, rgb(52, 186, 164), white);  
-    width: 25vw;   
-    height: 35vw; 
+    width: 30vw;   
+    height: 40vw; 
     margin: 20px;   
     display: flex;
-    align-items: center;       
+    align-items: center;      
+    justify-content: center;  
     border-radius: 10px;       
 }
+
+input[type="email"],
+input[type="password"] {
+    width: 20vw;  /* Adjust the width using viewport width */
+    height: 0.01vw;
+    padding: 1vw;  /* Optional: Adjust padding to use viewport width */
+    margin: 1vw 0;  /* Optional: Adjust margin to use viewport width */
+    border: 1px solid #ccc;
+    border-radius: 0.5vw;  /* Adjust border-radius using viewport width */
+    font-size: 1vw;  /* Adjust font-size using viewport width */
+}
+
+
+/* 
+Horizontal Alignment: Use align-items to align items horizontally.
+Vertical Alignment: Use justify-content to align the items vertically. */

@@ -1,0 +1,43 @@
+/* Nutrient.css */
+#fetching {
+    background-color: purple;
+    color: white;
+    outline-style: solid;
+    outline-color: red;
+    outline-offset: 0.5vh;
+    padding: 2vh;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vh;
+}
+
+input {
+    text-align: center;
+    padding: 1vh;
+    margin-bottom: 1.5vh;
+    border: 0.2vh solid #ced4da;
+    border-radius: 0.5vh;
+    width: 50vw; /* Adjust input width relative to viewport */
+}
+
+button {
+    padding: 1vh;
+    border: 0.2vh solid #ced4da;
+    border-radius: 0.5vh;
+    cursor: pointer;
+    font-size: 2vh;
+}
+
+button:hover {
+    background-color: #ddd;
+}
+
+#replace {
+    margin-top: 2vh;
+    font-size: 2vh;
+}
