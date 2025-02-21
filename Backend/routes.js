@@ -9,4 +9,6 @@ router.post('/signup', signup);
 
 router.get("/", (req, res) => res.json({"message" : "backend success"}));
 
+router.get()
+
 module.exports = router;
