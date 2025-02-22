@@ -4,7 +4,8 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const nutrientModel = require("./models/NutrientSchema.js");
 const exerciseModel = require("./models/ExerciseSchema.js");
-const UserDataModel = require("../models/UserDataSchema");
+const PrevDataModel = require('./models/PrevSchema.js');  
+
 
 
 const signin = asyncHandler(async (req, res) => {
@@ -88,43 +89,51 @@ const exercise = asyncHandler(async (req, res) => {
  
 const getLast7DaysData = asyncHandler(async (req, res) => {
     const { email } = req.query;
+    console.log(email);
 
     try {
-        const user = await UserDataModel.findOne({ userId: email }, { last7Days: 1, _id: 0 });
+        // Find the user by email
+        const user = await PrevDataModel.findOne({ email }, { entries: 1, _id: 0 });
 
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
 
-        res.status(200).json(user.last7Days);
+        // Send the last 7 entries
+        res.status(200).json(user.entries.slice(-7));  // Only return the last 7 entries
     } catch (error) {
         console.error("Error fetching last 7 days data:", error);
         res.status(500).json({ error: error.message });
     }
 });
- 
-const addEntry = asyncHandler(async (req, res) => {
-    const { email, newEntry } = req.body;
+
+const addOrUpdateUserData = asyncHandler(async (req, res) => {
+    const { email, newEntry } = req.body;  // Make sure newEntry is in the request body
 
     try {
-        const user = await UserDataModel.findOne({ userId: email });
+        // Find the user by email
+        let userData = await PrevDataModel.findOne({ email });
 
-        if (!user) {
-            return res.status(404).json({ message: "User not found" });
+        if (!userData) {
+            // If user doesn't exist, create a new document with the first entry
+            userData = new PrevDataModel({
+                email,
+                entries: [newEntry],  // Add the new entry to the entries array
+            });
+        } else {
+            // If user exists, push the new entry into the entries array
+            userData.entries.push(newEntry);
         }
 
-        // Update last7Days with the new entry while keeping only the latest 7
-        await UserDataModel.updateOne(
-            { userId: email },
-            { $push: { last7Days: { $each: [newEntry], $slice: -7 } } }
-        );
-
-        res.status(200).json({ message: "Entry added successfully" });
+        // Save the document and ensure we only keep 7 entries (handled by schema)
+        await userData.save();
+        
+        res.status(200).json({ message: 'User data updated or created successfully!' });
     } catch (error) {
-        console.error("Error adding entry:", error);
-        res.status(500).json({ error: error.message });
+        console.error('Error adding/updating user data:', error);
+        res.status(500).json({ message: 'Error adding/updating user data', error: error.message });
     }
 });
 
-
-module.exports = { signin, signup, nutrient, exercise, getLast7DaysData, addEntry};
+ 
+module.exports = { signin, signup, nutrient, exercise, getLast7DaysData, addOrUpdateUserData};
