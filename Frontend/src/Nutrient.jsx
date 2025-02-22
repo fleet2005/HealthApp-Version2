@@ -5,14 +5,14 @@ import './css/nutrientPage.css'; // Importing external CSS
 function Nutrient() {
     const [url, setUrl] = useState(null);
     const [inputFields, setInputFields] = useState([{ name: '', weight: '' }]);
-    const API_KEY = import.meta.env.VITE_REACT_APP_API_KEY;
-    console.log(API_KEY)
 
-    function logger(event) {
+    function logger(event) { 
         event.preventDefault();
-        const base_url = "https://api.api-ninjas.com/v1/nutrition?query=";
-        const query = inputFields.map(item => `${item.weight} ${item.name}`).join(', ');
-        setUrl(base_url + query);
+        if (inputFields.length === 0) return;
+
+        const food = encodeURIComponent(inputFields[0].name); // Taking only the first food item for now
+        const finalUrl = `http://localhost:5000/nutrient?foodName=${food}`;
+        setUrl(finalUrl);
     }
 
     const handleInputChange = (index, event) => {
@@ -25,28 +25,32 @@ function Nutrient() {
         setInputFields([...inputFields, { name: '', weight: '' }]);
     };
 
-    const handleRemoveFields = index => {
-        const values = [...inputFields];
-        values.splice(index, 1);
-        setInputFields(values);
+    const handleRemoveFields = (index) => {
+        setInputFields(inputFields.filter((_, i) => i !== index));
     };
 
     useEffect(() => {
         async function fetchData() {
             if (!url) return;
             try {
-                const headers = new Headers();
-                headers.append('X-Api-Key', API_KEY);
-                const response = await fetch(url, { headers });
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
                 const data = await response.json();
                 console.log(data);
+
                 const repl = document.getElementById('replace');
                 repl.innerText = "";
-                data.items.forEach(item => {
+                
+                if (data) {
                     const para = document.createElement('p');
-                    para.innerText = `Item Name: ${item.name}, Calories: ${item.calories}, Fats: ${item.fat_total_g}`;
+                    para.innerText = `Item Name: ${data.food_name}, Calories: ${data.calories}, Fats: ${data.fat_total_g}`;
                     repl.appendChild(para);
-                });
+                } else {
+                    repl.innerText = "No data found.";
+                }
+
             } catch (error) {
                 console.log(error);
             }
@@ -68,11 +72,12 @@ function Nutrient() {
                                 placeholder="Item-Name"
                                 value={inputField.name}
                                 onChange={event => handleInputChange(index, event)}
+                                required
                             />
                             <input
                                 type="text"
                                 name="weight"
-                                placeholder="Quantity"
+                                placeholder="Quantity (not used now)"
                                 value={inputField.weight}
                                 onChange={event => handleInputChange(index, event)}
                             />
