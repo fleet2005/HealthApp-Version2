@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Navbar from './Navbar.jsx';
 
 function Exercise() {
     const [activity, setActivity] = useState("");
@@ -41,6 +42,8 @@ function Exercise() {
     }
 
     return (
+        <>
+        <Navbar /> <br/><br/><br/><br/>
         <div id="ex" style={{ backgroundColor: "purple", color: "white", outlineStyle: "solid", outlineColor: "green", outlineOffset: "2px" }}>
             <br/>
             <h1>EXERCISE CALORIES BURNED</h1>
@@ -74,6 +77,7 @@ function Exercise() {
                 <div id="replace1">{calories}</div><br />
             </form>
         </div>
+        </>
     );
 }
 

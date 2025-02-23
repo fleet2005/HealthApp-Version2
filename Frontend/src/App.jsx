@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-d
 import PrivateRoute from './PrivateRoute.jsx';  
 import Nutrient from './Nutrient.jsx';
 import Bmi from './BmiCalculator.jsx';
+import Exercise from './Exercise.jsx';
 
 //Reason: JSX Differentiation
 // Uppercase components (e.g., <LoginPage />) are treated as React components.
@@ -19,6 +20,7 @@ function App()
               <Route path='/homepage'  element={<PrivateRoute> <HomePage/> </PrivateRoute>}/> 
               <Route path='/nutrient'  element={<PrivateRoute> <Nutrient/> </PrivateRoute>}/> 
               <Route path='/bmi' element={<PrivateRoute> <Bmi/> </PrivateRoute>}/> 
+              <Route path = 'exercise' element={<PrivateRoute> <Exercise/> </PrivateRoute>}/> 
             </Routes>
         </Router>
     );

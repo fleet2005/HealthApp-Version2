@@ -16,9 +16,9 @@ const HomePage = () => {
             <span style={{marginRight: '1vw'}}> HealthApp </span>
 
           <ul className="Items">
-            <li><a href="">Overview</a></li>
-            <li><a href="">Exercise Monitoring</a></li>
-            <li><a href="">BMI Calculator</a></li>
+            <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/homepage"); }}>Overview</a></li>
+            <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/exercise"); }}>Exercise Monitoring</a></li>
+            <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/bmi"); }}>BMI Calculator</a></li>
             <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/nutrient"); }}> Nutrient Tracking</a>
   </li>
           </ul>
