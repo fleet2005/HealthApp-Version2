@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar.jsx';
 import './css/nutrientPage.css'; // Importing external CSS
+import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer } from 'recharts';
+import axios from "axios";
 
 function Nutrient() {
     const [url, setUrl] = useState(null);
@@ -57,6 +59,20 @@ function Nutrient() {
         }
         fetchData();
     }, [url]);
+
+
+    useEffect(() => {
+        async function fetchContent() {
+          try {
+            const response = await axios.get("http://localhost:5000/getLast7DaysData?email=user@example.com");
+            console.log("Fetched Data:", response.data);
+          } catch (error) {
+            console.error("Error fetching data:", error);
+          }
+        }
+    
+        fetchContent();
+      }, []);
 
     return (
         <div>

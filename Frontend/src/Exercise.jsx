@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from './Navbar.jsx';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer } from 'recharts';
+import axios from "axios";
 
 function Exercise() {
     const [activity, setActivity] = useState("");
@@ -40,6 +42,19 @@ function Exercise() {
             setCalories("Error fetching data");
         }
     }
+
+    useEffect(() => {
+        async function fetchContent() {
+          try {
+            const response = await axios.get("http://localhost:5000/getLast7DaysData?email=user@example.com");
+            console.log("Fetched Data:", response.data);
+          } catch (error) {
+            console.error("Error fetching data:", error);
+          }
+        }
+    
+        fetchContent();
+      }, []);
 
     return (
         <>
