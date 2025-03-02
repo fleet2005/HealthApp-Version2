@@ -1,0 +1,678 @@
+FoodsConsumedTogether,Frequency
+"Rice, Sambar, Papad, Curd",1850
+"Roti, Palak Paneer, Dal",1670
+"Idli, Tomato Chutney, Sambar",1420
+"Dosa, Potato Masala, Coconut Chutney",1380
+"Paratha, Aloo Sabzi, Curd",1280
+"Biryani, Boondi Raita, Salad",1150
+"Poha, Sev, Tea",980
+"Upma, Tomato Chutney",920
+"Khichdi, Kadhi, Papad",870
+"Pav Bhaji, Masala Papad",810
+"Rajma, Jeera Rice, Salad",790
+"Chole, Bhature, Pickle",760
+"Aloo Paratha, Curd, Pickle",730
+"Uttapam, Sambar, Coconut Chutney",680
+"Pulao, Boondi Raita",640
+"Dhokla, Green Chutney, Tea",610
+"Vada, Sambar, Coconut Chutney",590
+"Pongal, Medu Vada, Coconut Chutney",550
+"Missal Pav, Buttermilk, Papad",520
+"Thali (Roti, Rice, 2 Sabzis, Dal, Salad)",1800
+"Samosa, Tamarind Chutney, Tea",950
+"Pakora, Mint Chutney, Tea",890
+"Kheer, Puri, Dry Fruits",830
+"Masala Dosa, Coconut Chutney, Sambar",770
+"Paneer Tikka, Mint Sauce, Salad",710
+"Rasam Rice, Papad, Curd",670
+"Aloo Sabzi, Puri, Pickle",630
+"Ragi Mudde, Sambar, Curd",580
+"Appam, Vegetable Stew, Coconut Chutney",540
+"Makki Roti, Sarson Saag, Curd",510
+"Bisi Bele Bath, Curd, Papad",490
+"Pongal, Medu Vada, Coconut Chutney",460
+"Thepla, Chunda, Tea",430
+"Pesarattu, Ginger Chutney, Sambar",400
+"Kadhi Pakora, Rice, Papad",380
+"Dal Makhani, Naan, Salad",350
+"Aloo Gobi, Roti, Curd",320
+"Chana Masala, Bhature, Pickle",300
+"Quinoa, Stir-Fried Vegetables, Curd",450
+"Bajra Roti, Lasun Chutney, Sabzi",420
+"Amaranth Seed Porridge, Jaggery, Milk",390
+"Bengal Gram Dal, Rice, Pickle",370
+"Black Gram Dal, Rice, Papad",360
+"Green Gram Dal, Rice, Salad",340
+"Lentil Dal, Rice, Ghee",330
+"Soya Bean Curry, Rice, Salad",310
+"Foxtail Millet Khichdi, Curd",290
+"Barley Porridge, Milk, Nuts",280
+"Jowar Roti, Sabzi, Curd",270
+"Maize Roti, Dal, Pickle",260
+"Rice Flakes Upma, Coconut Chutney",250
+"Rice Puffed Snack, Tea",240
+"Brown Rice, Dal, Sabzi",230
+"Parboiled Rice, Sambar, Papad",220
+"Samai Porridge, Jaggery, Milk",210
+"Varagu Rice, Sambar, Curd",200
+"Wheat Flour Roti, Sabzi, Dal",190
+"Wheat Atta Roti, Sabzi, Curd",180
+"Whole Wheat Roti, Sabzi, Pickle",170
+"Wheat Semolina Upma, Coconut Chutney",160
+"Wheat Vermicelli Kheer, Nuts",150
+"Wheat Vermicelli Roasted, Tea",140
+"Foxtail Millet Porridge, Milk",130
+"Proso Millet Khichdi, Curd",120
+"Rice Bran Porridge, Jaggery",110
+"Barnyard Millet Khichdi, Curd",100
+"Wheat Germ Porridge, Milk",90
+"Bamboo Seed Porridge, Jaggery",80
+"Banti Porridge, Milk",70
+"Buckwheat Pancakes, Honey",60
+"Chenopodium Seed Porridge, Milk",50
+"Cowage Seed Flour Porridge, Jaggery",40
+"Daincha Seed Porridge, Milk",30
+"Job's Tears Porridge, Jaggery",20
+"Oatmeal Porridge, Milk, Nuts",10
+"Kittul Flour Porridge, Jaggery",5
+"Lotus Seed Porridge, Milk",15
+"Makhana Snack, Tea",25
+"Rajkeera Seed Porridge, Jaggery",35
+"Water Lily Seed Porridge, Milk",45
+"Black Rice, Dal, Sabzi",55
+"Cracked Wheat Porridge, Milk",65
+"Sweet Sunnah Seeds, Milk",75
+"Almond Flour Pancakes, Honey",85
+"Buckwheat Groats Porridge, Milk",95
+"Bengal Gram Roasted Snack, Tea",105
+"Field Bean Curry, Rice, Papad",115
+"Khesari Dal, Rice, Pickle",125
+"Peas Roasted Snack, Tea",135
+"Goa Beans Curry, Rice, Salad",145
+"Malmandi Porridge, Milk",155
+"Sutari Porridge, Jaggery",165
+"Chickpeas Curry, Rice, Salad",175
+"Beansprouts Stir-Fry, Rice",185
+"Soya Flour Porridge, Milk",195
+"Peanut Butter Sandwich, Milk",205
+"Peanuts Roasted Snack, Tea",215
+"Tofu Stir-Fry, Rice",225
+"Black Beans Curry, Rice, Salad",235
+"Soybeans Curry, Rice, Papad",245
+"Chickpeas Roasted Snack, Tea",255
+"Agathi Leaves Stir-Fry, Rice",265
+"Amaranth Leaves Stir-Fry, Roti",275
+"Basella Leaves Curry, Rice",285
+"Bathua Leaves Stir-Fry, Roti",295
+"Beet Greens Stir-Fry, Rice",305
+"Betel Leaves Snack, Tea",315
+"Brussels Sprouts Stir-Fry, Rice",325
+"Cabbage Stir-Fry, Roti",335
+"Cauliflower Leaves Stir-Fry, Rice",345
+"Colocasia Leaves Curry, Rice",355
+"Drumstick Leaves Stir-Fry, Roti",365
+"Fenugreek Leaves Stir-Fry, Rice",375
+"Garden Cress Stir-Fry, Roti",385
+"Gogu Leaves Stir-Fry, Rice",395
+"Knol-Khol Leaves Stir-Fry, Roti",405
+"Lettuce Salad, Roti",415
+"Mustard Leaves Stir-Fry, Rice",425
+"Pak Choi Stir-Fry, Roti",435
+"Parsley Salad, Rice",445
+"Ponnaganni Stir-Fry, Roti",455
+"Pumpkin Leaves Stir-Fry, Rice",465
+"Radish Leaves Stir-Fry, Roti",475
+"Rumex Leaves Stir-Fry, Rice",485
+"Spinach Stir-Fry, Roti",495
+"Tamarind Leaves Curry, Rice",505
+"Ambat Chuka Stir-Fry, Roti",515
+"Bengal Gram Leaves Stir-Fry, Rice",525
+"Bottle Gourd Leaves Stir-Fry, Roti",535
+"Broad Bean Leaves Stir-Fry, Rice",545
+"Carrot Leaves Stir-Fry, Roti",555
+"Celery Leaves Stir-Fry, Rice",565
+"Chekkur Manis Stir-Fry, Roti",575
+"Colocasia Leaves Dried Curry, Rice",585
+"Cowpea Leaves Stir-Fry, Roti",595
+"Fetid Cassia Stir-Fry, Rice",605
+"Garden Sorrel Stir-Fry, Roti",615
+"Ipomoea Stems Stir-Fry, Rice",625
+"Ipomoea Leaves Stir-Fry, Roti",635
+"Kuppameni Stir-Fry, Rice",645
+"Manathakkali Stir-Fry, Roti",655
+"Mayalu Stir-Fry, Rice",665
+"Modakonthan Keerai Stir-Fry, Roti",675
+"Mukarrate Keerai Stir-Fry, Rice",685
+"Nerringi Stir-Fry, Roti",695
+"Paruppu Keerai Stir-Fry, Rice",705
+"Rape Stem Stir-Fry, Roti",715
+"Rape Leaves Stir-Fry, Rice",725
+"Safflower Leaves Stir-Fry, Roti",735
+"Shepu Stir-Fry, Rice",745
+"Spinach Stalks Stir-Fry, Roti",755
+"Susni Sag Stir-Fry, Rice",765
+"Turnip Greens Stir-Fry, Roti",775
+"Ceylon Pasali Stir-Fry, Rice",785
+"Chimti Sag Stir-Fry, Roti",795
+"Giria Sag Stir-Fry, Rice",805
+"Gulcharni Stir-Fry, Roti",815
+"Kasini Keerat Stir-Fry, Rice",825
+"Katha Sag Stir-Fry, Roti",835
+"Kena Sag Stir-Fry, Rice",845
+"Khesari Leaves Stir-Fry, Roti",855
+"Koila Karha Sag Stir-Fry, Rice",865
+"Konar Sag Stir-Fry, Roti",875
+"Korla Leaves Stir-Fry, Rice",885
+"Manal Keerai Stir-Fry, Roti",895
+"Mata Sag Stir-Fry, Rice",905
+"Nachukotta Keerai Stir-Fry, Roti",915
+"Neem Leaves Stir-Fry, Rice",925
+"Pacharisi Keerai Stir-Fry, Roti",935
+"Panna Keerai Stir-Fry, Rice",945
+"Parwar Sag Stir-Fry, Roti",955
+"Pasarai Keerai Stir-Fry, Rice",965
+"Patua Sag Stir-Fry, Roti",975
+"Potato Leaves Stir-Fry, Rice",985
+"Puliara Keerai Stir-Fry, Roti",995
+"Punnaku Keerai Stir-Fry, Rice",1005
+"Perandai Stir-Fry, Roti",1015
+"Saravallai Keerai Stir-Fry, Rice",1025
+"Sarli Sag Stir-Fry, Roti",1035
+"Seemai Ponnanganni Stir-Fry, Rice",1045
+"Sinduar Sag Stir-Fry, Roti",1055
+"Sinduar Wild Stir-Fry, Rice",1065
+"Sonchal Sag Stir-Fry, Roti",1075
+"Soya Leaves Stir-Fry, Rice",1085
+"Sweet Potato Greens Stir-Fry, Roti",1095
+"Thooduvalai Keerai Stir-Fry, Rice",1105
+"Veethi Keerai Stir-Fry, Roti",1115
+"Velaikeerai Stir-Fry, Rice",1125
+"Vella Keerai Stir-Fry, Roti",1135
+"Rice, Sambar, Papad, Curd",1850
+"Roti, Palak Paneer, Dal",1670
+"Idli, Tomato Chutney, Sambar",1420
+"Dosa, Potato Masala, Coconut Chutney",1380
+"Paratha, Aloo Sabzi, Curd",1280
+"Biryani, Boondi Raita, Salad",1150
+"Poha, Sev, Tea",980
+"Upma, Tomato Chutney",920
+"Khichdi, Kadhi, Papad",870
+"Pav Bhaji, Masala Papad",810
+"Rajma, Jeera Rice, Salad",790
+"Chole, Bhature, Pickle",760
+"Aloo Paratha, Curd, Pickle",730
+"Uttapam, Sambar, Coconut Chutney",680
+"Pulao, Boondi Raita",640
+"Dhokla, Green Chutney, Tea",610
+"Vada, Sambar, Coconut Chutney",590
+"Pongal, Medu Vada, Coconut Chutney",550
+"Missal Pav, Buttermilk, Papad",520
+"Thali (Roti, Rice, 2 Sabzis, Dal, Salad)",1800
+"Samosa, Tamarind Chutney, Tea",950
+"Pakora, Mint Chutney, Tea",890
+"Kheer, Puri, Dry Fruits",830
+"Masala Dosa, Coconut Chutney, Sambar",770
+"Paneer Tikka, Mint Sauce, Salad",710
+"Rasam Rice, Papad, Curd",670
+"Aloo Sabzi, Puri, Pickle",630
+"Ragi Mudde, Sambar, Curd",580
+"Appam, Vegetable Stew, Coconut Chutney",540
+"Makki Roti, Sarson Saag, Curd",510
+"Bisi Bele Bath, Curd, Papad",490
+"Pongal, Medu Vada, Coconut Chutney",460
+"Thepla, Chunda, Tea",430
+"Pesarattu, Ginger Chutney, Sambar",400
+"Kadhi Pakora, Rice, Papad",380
+"Dal Makhani, Naan, Salad",350
+"Aloo Gobi, Roti, Curd",320
+"Chana Masala, Bhature, Pickle",300
+"Quinoa, Stir-Fried Vegetables, Curd",450
+"Bajra Roti, Lasun Chutney, Sabzi",420
+"Amaranth Seed Porridge, Jaggery, Milk",390
+"Bengal Gram Dal, Rice, Pickle",370
+"Black Gram Dal, Rice, Papad",360
+"Green Gram Dal, Rice, Salad",340
+"Lentil Dal, Rice, Ghee",330
+"Soya Bean Curry, Rice, Salad",310
+"Foxtail Millet Khichdi, Curd",290
+"Barley Porridge, Milk, Nuts",280
+"Jowar Roti, Sabzi, Curd",270
+"Maize Roti, Dal, Pickle",260
+"Rice Flakes Upma, Coconut Chutney",250
+"Rice Puffed Snack, Tea",240
+"Brown Rice, Dal, Sabzi",230
+"Parboiled Rice, Sambar, Papad",220
+"Samai Porridge, Jaggery, Milk",210
+"Varagu Rice, Sambar, Curd",200
+"Wheat Flour Roti, Sabzi, Dal",190
+"Wheat Atta Roti, Sabzi, Curd",180
+"Whole Wheat Roti, Sabzi, Pickle",170
+"Wheat Semolina Upma, Coconut Chutney",160
+"Wheat Vermicelli Kheer, Nuts",150
+"Wheat Vermicelli Roasted, Tea",140
+"Foxtail Millet Porridge, Milk",130
+"Proso Millet Khichdi, Curd",120
+"Rice Bran Porridge, Jaggery",110
+"Barnyard Millet Khichdi, Curd",100
+"Wheat Germ Porridge, Milk",90
+"Bamboo Seed Porridge, Jaggery",80
+"Banti Porridge, Milk",70
+"Buckwheat Pancakes, Honey",60
+"Chenopodium Seed Porridge, Milk",50
+"Cowage Seed Flour Porridge, Jaggery",40
+"Daincha Seed Porridge, Milk",30
+"Job's Tears Porridge, Jaggery",20
+"Oatmeal Porridge, Milk, Nuts",10
+"Kittul Flour Porridge, Jaggery",5
+"Lotus Seed Porridge, Milk",15
+"Makhana Snack, Tea",25
+"Rajkeera Seed Porridge, Jaggery",35
+"Water Lily Seed Porridge, Milk",45
+"Black Rice, Dal, Sabzi",55
+"Cracked Wheat Porridge, Milk",65
+"Sweet Sunnah Seeds, Milk",75
+"Almond Flour Pancakes, Honey",85
+"Buckwheat Groats Porridge, Milk",95
+"Bengal Gram Roasted Snack, Tea",105
+"Field Bean Curry, Rice, Papad",115
+"Khesari Dal, Rice, Pickle",125
+"Peas Roasted Snack, Tea",135
+"Goa Beans Curry, Rice, Salad",145
+"Malmandi Porridge, Milk",155
+"Sutari Porridge, Jaggery",165
+"Chickpeas Curry, Rice, Salad",175
+"Beansprouts Stir-Fry, Rice",185
+"Soya Flour Porridge, Milk",195
+"Peanut Butter Sandwich, Milk",205
+"Peanuts Roasted Snack, Tea",215
+"Tofu Stir-Fry, Rice",225
+"Black Beans Curry, Rice, Salad",235
+"Soybeans Curry, Rice, Papad",245
+"Chickpeas Roasted Snack, Tea",255
+"Agathi Leaves Stir-Fry, Rice",265
+"Amaranth Leaves Stir-Fry, Roti",275
+"Basella Leaves Curry, Rice",285
+"Bathua Leaves Stir-Fry, Roti",295
+"Beet Greens Stir-Fry, Rice",305
+"Betel Leaves Snack, Tea",315
+"Brussels Sprouts Stir-Fry, Rice",325
+"Cabbage Stir-Fry, Roti",335
+"Cauliflower Leaves Stir-Fry, Rice",345
+"Colocasia Leaves Curry, Rice",355
+"Drumstick Leaves Stir-Fry, Roti",365
+"Fenugreek Leaves Stir-Fry, Rice",375
+"Garden Cress Stir-Fry, Roti",385
+"Gogu Leaves Stir-Fry, Rice",395
+"Knol-Khol Leaves Stir-Fry, Roti",405
+"Lettuce Salad, Roti",415
+"Mustard Leaves Stir-Fry, Rice",425
+"Pak Choi Stir-Fry, Roti",435
+"Parsley Salad, Rice",445
+"Ponnaganni Stir-Fry, Roti",455
+"Pumpkin Leaves Stir-Fry, Rice",465
+"Radish Leaves Stir-Fry, Roti",475
+"Rumex Leaves Stir-Fry, Rice",485
+"Spinach Stir-Fry, Roti",495
+"Tamarind Leaves Curry, Rice",505
+"Ambat Chuka Stir-Fry, Roti",515
+"Bengal Gram Leaves Stir-Fry, Rice",525
+"Bottle Gourd Leaves Stir-Fry, Roti",535
+"Broad Bean Leaves Stir-Fry, Rice",545
+"Carrot Leaves Stir-Fry, Roti",555
+"Celery Leaves Stir-Fry, Rice",565
+"Chekkur Manis Stir-Fry, Roti",575
+"Colocasia Leaves Dried Curry, Rice",585
+"Cowpea Leaves Stir-Fry, Roti",595
+"Fetid Cassia Stir-Fry, Rice",605
+"Garden Sorrel Stir-Fry, Roti",615
+"Ipomoea Stems Stir-Fry, Rice",625
+"Ipomoea Leaves Stir-Fry, Roti",635
+"Kuppameni Stir-Fry, Rice",645
+"Manathakkali Stir-Fry, Roti",655
+"Mayalu Stir-Fry, Rice",665
+"Modakonthan Keerai Stir-Fry, Roti",675
+"Mukarrate Keerai Stir-Fry, Rice",685
+"Nerringi Stir-Fry, Roti",695
+"Paruppu Keerai Stir-Fry, Rice",705
+"Rape Stem Stir-Fry, Roti",715
+"Rape Leaves Stir-Fry, Rice",725
+"Safflower Leaves Stir-Fry, Roti",735
+"Shepu Stir-Fry, Rice",745
+"Spinach Stalks Stir-Fry, Roti",755
+"Susni Sag Stir-Fry, Rice",765
+"Turnip Greens Stir-Fry, Roti",775
+"Ceylon Pasali Stir-Fry, Rice",785
+"Chimti Sag Stir-Fry, Roti",795
+"Giria Sag Stir-Fry, Rice",805
+"Gulcharni Stir-Fry, Roti",815
+"Kasini Keerat Stir-Fry, Rice",825
+"Katha Sag Stir-Fry, Roti",835
+"Kena Sag Stir-Fry, Rice",845
+"Khesari Leaves Stir-Fry, Roti",855
+"Koila Karha Sag Stir-Fry, Rice",865
+"Konar Sag Stir-Fry, Roti",875
+"Korla Leaves Stir-Fry, Rice",885
+"Manal Keerai Stir-Fry, Roti",895
+"Mata Sag Stir-Fry, Rice",905
+"Nachukotta Keerai Stir-Fry, Roti",915
+"Neem Leaves Stir-Fry, Rice",925
+"Pacharisi Keerai Stir-Fry, Roti",935
+"Panna Keerai Stir-Fry, Rice",945
+"Parwar Sag Stir-Fry, Roti",955
+"Pasarai Keerai Stir-Fry, Rice",965
+"Patua Sag Stir-Fry, Roti",975
+"Potato Leaves Stir-Fry, Rice",985
+"Puliara Keerai Stir-Fry, Roti",995
+"Punnaku Keerai Stir-Fry, Rice",1005
+"Perandai Stir-Fry, Roti",1015
+"Saravallai Keerai Stir-Fry, Rice",1025
+"Sarli Sag Stir-Fry, Roti",1035
+"Seemai Ponnanganni Stir-Fry, Rice",1045
+"Sinduar Sag Stir-Fry, Roti",1055
+"Sinduar Wild Stir-Fry, Rice",1065
+"Sonchal Sag Stir-Fry, Roti",1075
+"Soya Leaves Stir-Fry, Rice",1085
+"Sweet Potato Greens Stir-Fry, Roti",1095
+"Thooduvalai Keerai Stir-Fry, Rice",1105
+"Veethi Keerai Stir-Fry, Roti",1115
+"Velaikeerai Stir-Fry, Rice",1125
+"Vella Keerai Stir-Fry, Roti",1135
+"Pani Puri, Masala Water, Sev", 1200
+"Kachori, Aloo Sabzi, Tamarind Chutney", 1100
+"Medu Vada, Coconut Chutney, Sambar", 1050
+"Sabudana Khichdi, Peanut Chutney, Curd", 950
+"Pav Bhaji, Butter Pav, Onion", 900
+"Misal Pav, Farsan, Buttermilk", 880
+"Puran Poli, Ghee, Milk", 850
+"Litti Chokha, Ghee, Pickle", 820
+"Khandvi, Green Chutney, Sev", 800
+"Poha, Jalebi, Tea", 780
+"Aloo Tikki, Green Chutney, Tamarind Chutney", 760
+"Chana Chaat, Onion, Lemon", 740
+"Raj Kachori, Yogurt, Tamarind Chutney", 720
+"Dhokla, Mint Chutney, Sev", 700
+"Kulfi, Falooda, Rose Syrup", 680
+"Jalebi, Rabri", 660
+"Gulab Jamun, Vanilla Ice Cream", 640
+"Rasgulla, Rabri", 620
+"Malai Kofta, Naan, Salad", 600
+"Paneer Butter Masala, Garlic Naan, Salad", 580
+"Chicken Biryani, Raita, Salad", 560
+"Fish Curry, Steamed Rice, Lemon", 540
+"Prawn Curry, Coconut Rice, Salad", 520
+"Egg Curry, Roti, Pickle", 500
+"Keema Pav, Onion, Lemon", 480
+"Chicken Tikka, Mint Chutney, Salad", 460
+"Tandoori Chicken, Mint Chutney, Salad", 440
+"Butter Chicken, Naan, Salad", 420
+"Chicken 65, Curry Leaves, Lemon", 400
+"Chilli Paneer, Fried Rice, Manchurian", 380
+"Vegetable Manchurian, Fried Rice, Chilli Sauce", 360
+"Gobi Manchurian, Fried Rice, Soy Sauce", 340
+"Spring Rolls, Sweet Chilli Sauce", 320
+"Momos, Red Chutney, Soy Sauce", 300
+"Thukpa, Momos, Chilli Sauce", 280
+"Chowmein, Chilli Chicken", 260
+"Fried Rice, Chilli Paneer", 240
+"Hakka Noodles, Veg Manchurian", 220
+"Paneer Tikka Masala, Butter Naan", 200
+"Dal Tadka, Jeera Rice, Papad", 180
+"Kadai Paneer, Roti, Salad", 160
+"Palak Paneer, Roti, Salad", 140
+"Baingan Bharta, Roti, Pickle", 120
+"Aloo Gobi, Roti, Curd", 100
+"Aloo Matar, Roti, Salad", 80
+"Aloo Methi, Roti, Curd", 60
+"Aloo Jeera, Roti, Pickle", 40
+"Aloo Tamatar, Roti, Curd", 20
+"Aloo Shimla Mirch, Roti, Salad", 10
+"Aloo Palak, Roti, Curd", 15
+"Aloo Bhindi, Roti, Pickle", 25
+"Aloo Beans, Roti, Salad", 35
+"Aloo Lauki, Roti, Curd", 45
+"Aloo Kaddu, Roti, Pickle", 55
+"Aloo Karela, Roti, Salad", 65
+"Aloo Parwal, Roti, Curd", 75
+"Aloo Arbi, Roti, Pickle", 85
+"Aloo Tinda, Roti, Salad", 95
+"Aloo Chana, Roti, Curd", 105
+"Aloo Rajma, Roti, Pickle", 115
+"Aloo Chole, Roti, Salad", 125
+"Aloo Kabuli Chana, Roti, Curd", 135
+"Aloo Lobia, Roti, Pickle", 145
+"Aloo Matki, Roti, Salad", 155
+"Aloo Moth, Roti, Curd", 165
+"Aloo Urad Dal, Roti, Pickle", 175
+"Aloo Moong Dal, Roti, Salad", 185
+"Aloo Masoor Dal, Roti, Curd", 195
+"Aloo Chana Dal, Roti, Pickle", 205
+"Aloo Toor Dal, Roti, Salad", 215
+"Aloo Rajma, Roti, Curd", 225
+"Aloo Chole, Roti, Pickle", 235
+"Aloo Kabuli Chana, Roti, Salad", 245
+"Aloo Lobia, Roti, Curd", 255
+"Aloo Matki, Roti, Pickle", 265
+"Aloo Moth, Roti, Salad", 275
+"Aloo Urad Dal, Roti, Curd", 285
+"Aloo Moong Dal, Roti, Pickle", 295
+"Aloo Masoor Dal, Roti, Salad", 305
+"Aloo Chana Dal, Roti, Curd", 315
+"Aloo Toor Dal, Roti, Pickle", 325
+"Aloo Rajma, Roti, Salad", 335
+"Aloo Chole, Roti, Curd", 345
+"Aloo Kabuli Chana, Roti, Pickle", 355
+"Aloo Lobia, Roti, Salad", 365
+"Aloo Matki, Roti, Curd", 375
+"Aloo Moth, Roti, Pickle", 385
+"Aloo Urad Dal, Roti, Salad", 395
+"Aloo Moong Dal, Roti, Curd", 405
+"Aloo Masoor Dal, Roti, Pickle", 415
+"Aloo Chana Dal, Roti, Salad", 425
+"Aloo Toor Dal, Roti, Curd", 435
+"Aloo Rajma, Roti, Pickle", 445
+"Aloo Chole, Roti, Salad", 455
+"Aloo Kabuli Chana, Roti, Curd", 465
+"Aloo Lobia, Roti, Pickle", 475
+"Aloo Matki, Roti, Salad", 485
+"Aloo Moth, Roti, Curd", 495
+"Aloo Urad Dal, Roti, Pickle", 505
+"Aloo Moong Dal, Roti, Salad", 515
+"Aloo Masoor Dal, Roti, Curd", 525
+"Aloo Chana Dal, Roti, Pickle", 535
+"Aloo Toor Dal, Roti, Salad", 545
+"Aloo Rajma, Roti, Curd", 555
+"Aloo Chole, Roti, Pickle", 565
+"Aloo Kabuli Chana, Roti, Salad", 575
+"Aloo Lobia, Roti, Curd", 585
+"Aloo Matki, Roti, Pickle", 595
+"Aloo Moth, Roti, Salad", 605
+"Aloo Urad Dal, Roti, Curd", 615
+"Aloo Moong Dal, Roti, Pickle", 625
+"Aloo Masoor Dal, Roti, Salad", 635
+"Aloo Chana Dal, Roti, Curd", 645
+"Aloo Toor Dal, Roti, Pickle", 655
+"Aloo Rajma, Roti, Salad", 665
+"Aloo Chole, Roti, Curd", 675
+"Aloo Kabuli Chana, Roti, Pickle", 685
+"Aloo Lobia, Roti, Salad", 695
+"Aloo Matki, Roti, Curd", 705
+"Aloo Moth, Roti, Pickle", 715
+"Aloo Urad Dal, Roti, Salad", 725
+"Aloo Moong Dal, Roti, Curd", 735
+"Aloo Masoor Dal, Roti, Pickle", 745
+"Aloo Chana Dal, Roti, Salad", 755
+"Aloo Toor Dal, Roti, Curd", 765
+"Aloo Rajma, Roti, Pickle", 775
+"Aloo Chole, Roti, Salad", 785
+"Aloo Kabuli Chana, Roti, Curd", 795
+"Aloo Lobia, Roti, Pickle", 805
+"Aloo Matki, Roti, Salad", 815
+"Aloo Moth, Roti, Curd", 825
+"Aloo Urad Dal, Roti, Pickle", 835
+"Aloo Moong Dal, Roti, Salad", 845
+"Aloo Masoor Dal, Roti, Curd", 855
+"Aloo Chana Dal, Roti, Pickle", 865
+"Aloo Toor Dal, Roti, Salad", 875
+"Aloo Rajma, Roti, Curd", 885
+"Aloo Chole, Roti, Pickle", 895
+"Aloo Kabuli Chana, Roti, Salad", 905
+"Aloo Lobia, Roti, Curd", 915
+"Aloo Matki, Roti, Pickle", 925
+"Aloo Moth, Roti, Salad", 935
+"Aloo Urad Dal, Roti, Curd", 945
+"Aloo Moong Dal, Roti, Pickle", 955
+"Aloo Masoor Dal, Roti, Salad", 965
+"Aloo Chana Dal, Roti, Curd", 975
+"Aloo Toor Dal, Roti, Pickle", 985
+"Aloo Rajma, Roti, Salad", 995
+"Aloo Chole, Roti, Curd", 1005
+"Aloo Kabuli Chana, Roti, Pickle", 1015
+"Aloo Lobia, Roti, Salad", 1025
+"Aloo Matki, Roti, Curd", 1035
+"Aloo Moth, Roti, Pickle", 1045
+"Aloo Urad Dal, Roti, Salad", 1055
+"Aloo Moong Dal, Roti, Curd", 1065
+"Aloo Masoor Dal, Roti, Pickle", 1075
+"Aloo Chana Dal, Roti, Salad", 1085
+"Aloo Toor Dal, Roti, Curd", 1095
+"Aloo Rajma, Roti, Pickle", 1105
+"Aloo Chole, Roti, Salad", 1115
+"Aloo Kabuli Chana, Roti, Curd", 1125
+"Aloo Lobia, Roti, Pickle", 1135
+"Aloo Matki, Roti, Salad", 1145
+"Aloo Moth, Roti, Curd", 1155
+"Aloo Urad Dal, Roti, Pickle", 1165
+"Aloo Moong Dal, Roti, Salad", 1175
+"Aloo Masoor Dal, Roti, Curd", 1185
+"Aloo Chana Dal, Roti, Pickle", 1195
+"Aloo Toor Dal, Roti, Salad", 1205
+"Aloo Rajma, Roti, Curd", 1215
+"Aloo Chole, Roti, Pickle", 1225
+"Aloo Kabuli Chana, Roti, Salad", 1235
+"Aloo Lobia, Roti, Curd", 1245
+"Aloo Matki, Roti, Pickle", 1255
+"Aloo Moth, Roti, Salad", 1265
+"Aloo Urad Dal, Roti, Curd", 1275
+"Aloo Moong Dal, Roti, Pickle", 1285
+"Aloo Masoor Dal, Roti, Salad", 1295
+"Aloo Chana Dal, Roti, Curd", 1305
+"Aloo Toor Dal, Roti, Pickle", 1315
+"Aloo Rajma, Roti, Salad", 1325
+"Aloo Chole, Roti, Curd", 1335
+"Aloo Kabuli Chana, Roti, Pickle", 1345
+"Aloo Lobia, Roti, Salad", 1355
+"Aloo Matki, Roti, Curd", 1365
+"Aloo Moth, Roti, Pickle", 1375
+"Aloo Urad Dal, Roti, Salad", 1385
+"Aloo Moong Dal, Roti, Curd", 1395
+"Aloo Masoor Dal, Roti, Pickle", 1405
+"Aloo Chana Dal, Roti, Salad", 1415
+"Aloo Toor Dal, Roti, Curd", 1425
+"Aloo Rajma, Roti, Pickle", 1435
+"Aloo Chole, Roti, Salad", 1445
+"Aloo Kabuli Chana, Roti, Curd", 1455
+"Aloo Lobia, Roti, Pickle", 1465
+"Aloo Matki, Roti, Salad", 1475
+"Aloo Moth, Roti, Curd", 1485
+"Aloo Urad Dal, Roti, Pickle", 1495
+"Aloo Moong Dal, Roti, Salad", 1505
+"Aloo Masoor Dal, Roti, Curd", 1515
+"Aloo Chana Dal, Roti, Pickle", 1525
+"Aloo Toor Dal, Roti, Salad", 1535
+"Aloo Rajma, Roti, Curd", 1545
+"Aloo Chole, Roti, Pickle", 1555
+"Aloo Kabuli Chana, Roti, Salad", 1565
+"Aloo Lobia, Roti, Curd", 1575
+"Aloo Matki, Roti, Pickle", 1585
+"Aloo Moth, Roti, Salad", 1595
+"Aloo Urad Dal, Roti, Curd", 1605
+"Aloo Moong Dal, Roti, Pickle", 1615
+"Aloo Masoor Dal, Roti, Salad", 1625
+"Aloo Chana Dal, Roti, Curd", 1635
+"Aloo Toor Dal, Roti, Pickle", 1645
+"Aloo Rajma, Roti, Salad", 1655
+"Aloo Chole, Roti, Curd", 1665
+"Aloo Kabuli Chana, Roti, Pickle", 1675
+"Aloo Lobia, Roti, Salad", 1685
+"Aloo Matki, Roti, Curd", 1695
+"Aloo Moth, Roti, Pickle", 1705
+"Aloo Urad Dal, Roti, Salad", 1715
+"Aloo Moong Dal, Roti, Curd", 1725
+"Aloo Masoor Dal, Roti, Pickle", 1735
+"Aloo Chana Dal, Roti, Salad", 1745
+"Aloo Toor Dal, Roti, Curd", 1755
+"Aloo Rajma, Roti, Pickle", 1765
+"Aloo Chole, Roti, Salad", 1775
+"Aloo Kabuli Chana, Roti, Curd", 1785
+"Aloo Lobia, Roti, Pickle", 1795
+"Aloo Matki, Roti, Salad", 1805
+"Aloo Moth, Roti, Curd", 1815
+"Aloo Urad Dal, Roti, Pickle", 1825
+"Aloo Moong Dal, Roti, Salad", 1835
+"Aloo Masoor Dal, Roti, Curd", 1845
+"Aloo Chana Dal, Roti, Pickle", 1855
+"Aloo Toor Dal, Roti, Salad", 1865
+"Aloo Rajma, Roti, Curd", 1875
+"Aloo Chole, Roti, Pickle", 1885
+"Aloo Kabuli Chana, Roti, Salad", 1895
+"Aloo Lobia, Roti, Curd", 1905
+"Aloo Matki, Roti, Pickle", 1915
+"Aloo Moth, Roti, Salad", 1925
+"Aloo Urad Dal, Roti, Curd", 1935
+"Aloo Moong Dal, Roti, Pickle", 1945
+"Aloo Masoor Dal, Roti, Salad", 1955
+"Aloo Chana Dal, Roti, Curd", 1965
+"Aloo Toor Dal, Roti, Pickle", 1975
+"Aloo Rajma, Roti, Salad", 1985
+"Aloo Chole, Roti, Curd", 1995
+"Aloo Kabuli Chana, Roti, Pickle", 2005
+"Aloo Lobia, Roti, Salad", 2015
+"Aloo Matki, Roti, Curd", 2025
+"Aloo Moth, Roti, Pickle", 2035
+"Aloo Urad Dal, Roti, Salad", 2045
+"Aloo Moong Dal, Roti, Curd", 2055
+"Aloo Masoor Dal, Roti, Pickle", 2065
+"Aloo Chana Dal, Roti, Salad", 2075
+"Aloo Toor Dal, Roti, Curd", 2085
+"Aloo Rajma, Roti, Pickle", 2095
+"Aloo Chole, Roti, Salad", 2105
+"Aloo Kabuli Chana, Roti, Curd", 2115
+"Aloo Lobia, Roti, Pickle", 2125
+"Aloo Matki, Roti, Salad", 2135
+"Aloo Moth, Roti, Curd", 2145
+"Aloo Urad Dal, Roti, Pickle", 2155
+"Aloo Moong Dal, Roti, Salad", 2165
+"Aloo Masoor Dal, Roti, Curd", 2175
+"Aloo Chana Dal, Roti, Pickle", 2185
+"Aloo Toor Dal, Roti, Salad", 2195
+"Aloo Rajma, Roti, Curd", 2205
+"Aloo Chole, Roti, Pickle", 2215
+"Aloo Kabuli Chana, Roti, Salad", 2225
+"Aloo Lobia, Roti, Curd", 2235
+"Aloo Matki, Roti, Pickle", 2245
+"Aloo Moth, Roti, Salad", 2255
+"Aloo Urad Dal, Roti, Curd", 2265
+"Aloo Moong Dal, Roti, Pickle", 2275
+"Aloo Masoor Dal, Roti, Salad", 2285
+"Aloo Chana Dal, Roti, Curd", 2295
+"Aloo Toor Dal, Roti, Pickle", 2305
+"Aloo Rajma, Roti, Salad", 2315
+"Aloo Chole, Roti, Curd", 2325
+"Aloo Kabuli Chana, Roti, Pickle", 2335
+"Aloo Lobia, Roti, Salad", 2345
+"Aloo Matki, Roti, Curd", 2355
+"Aloo Moth, Roti, Pickle", 2365
+"Aloo Urad Dal, Roti, Salad", 2375
+"Aloo Moong Dal, Roti, Curd", 2385
+"Aloo Masoor Dal, Roti, Pickle", 2395
+"Aloo Chana Dal, Roti, Salad", 2405
+"Aloo Toor Dal, Roti, Curd", 2415
+"Aloo Rajma, Roti, Pickle", 2425
+"Aloo Chole, Roti, Salad", 2435
+"Aloo Kabuli Chana, Roti, Curd", 2445
+"Aloo Lobia, Roti, Pickle", 2455
+"Aloo Matki, Roti, Salad", 2465
+"Aloo Moth, Roti, Curd", 2475
+"Aloo Urad Dal, Roti, Pickle", 2485
+"Aloo Moong Dal, Roti, Salad", 2495
+"Aloo Masoor Dal, Roti, Curd", 2505
