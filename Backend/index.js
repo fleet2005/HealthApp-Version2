@@ -15,6 +15,11 @@ connectDB();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use((req, res, next) => {
+    res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self'; object-src 'none'; style-src 'self'");
+    next();
+}); //preventing xss attacks
+
 app.listen(port, ()=>{
     console.log(`Listening on port ${port}`);
 })
