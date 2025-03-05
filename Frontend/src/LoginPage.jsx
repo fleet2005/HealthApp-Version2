@@ -36,6 +36,7 @@ const LoginPage = () => {
             if (response.status === 200) {
                 alert("Login Successful!");
                 localStorage.setItem("token", response.data.accessToken);
+                console.log(localStorage.getItem("token"));
                 navigate("/homepage");
             } else {
                 setError("Invalid credentials");

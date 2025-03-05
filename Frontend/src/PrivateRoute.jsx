@@ -7,3 +7,6 @@ const PrivateRoute = ({ children }) => {
 };
 
 export default PrivateRoute;
+
+//for frontend route protection - private route
+//for protected backend api endpoint access - jwt

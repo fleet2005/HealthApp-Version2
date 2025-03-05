@@ -19,7 +19,7 @@ const signin = asyncHandler(async (req, res) => {
             user : {
                 email : document.email,
             },
-        }, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "1m"});
+        }, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "4m"});
 
         res.status(200).json({accessToken}); 
     } 
