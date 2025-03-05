@@ -19,7 +19,7 @@ const signin = asyncHandler(async (req, res) => {
             user : {
                 email : document.email,
             },
-        }, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "4m"});
+        }, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "10m"});
 
         res.status(200).json({accessToken}); 
     } 
@@ -91,6 +91,11 @@ const getLast7DaysData = asyncHandler(async (req, res) => {
     const { email } = req.query;
     console.log(email);
 
+    console.log(req.user.user.email)
+
+    //req.user set by jwt
+    if(req.user.user.email!=email) return res.status(404).json({message : "Unauthorised Access"});
+
     try {
         // Find the user by email
         const user = await PrevDataModel.findOne({ email }, { entries: 1, _id: 0 });
@@ -110,6 +115,8 @@ const getLast7DaysData = asyncHandler(async (req, res) => {
 const addOrUpdateUserData = asyncHandler(async (req, res) => {
     const { email, newEntry } = req.body;  // Make sure newEntry is in the request body
 
+    if(req.user.user.email!=email) return res.status(404).json({message : "Unauthorised Access"});
+    
     try {
         // Find the user by email
         let userData = await PrevDataModel.findOne({ email });
