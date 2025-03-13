@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar.jsx';
 import './css/nutrientPage.css'; // Importing external CSS
-import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import axios from "axios";
 
 function Nutrient() {
     const [url, setUrl] = useState(null);
     const [inputFields, setInputFields] = useState([{ name: '', weight: '' }]);
+    const [calorieData, setCalorieData] = useState([]);
+    const [macroData, setMacroData] = useState([]);
+    const userEmail = localStorage.getItem("Email");
+    const authToken = localStorage.getItem("AuthToken");
 
     function logger(event) { 
         event.preventDefault();
@@ -60,19 +64,36 @@ function Nutrient() {
         fetchData();
     }, [url]);
 
-
     useEffect(() => {
         async function fetchContent() {
           try {
-            const response = await axios.get("http://localhost:5000/getLast7DaysData?email=user@example.com");
+            const token = localStorage.getItem("token");
+            const response = await axios.get(`http://localhost:5000/getLast7DaysData?email=${localStorage.getItem("user")}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                }
+            });
+
             console.log("Fetched Data:", response.data);
+            
+            const formattedCalorieData = response.data.map((entry, index) => ({
+                name: `Day ${index + 1}`,
+                Calories: entry.nutrition.consumed_energy_kcal
+            }));
+            setCalorieData(formattedCalorieData);
+            
+            const latestEntry = response.data[response.data.length - 1].nutrition;
+            setMacroData([
+                { name: "Protein", value: latestEntry.consumed_protein_g },
+                { name: "Fat", value: latestEntry.consumed_fat_g }
+            ]);
           } catch (error) {
             console.error("Error fetching data:", error);
           }
         }
-    
         fetchContent();
-      }, []);
+      }, [userEmail, authToken]);
 
     return (
         <div>
@@ -105,6 +126,32 @@ function Nutrient() {
                 </form>
                 <div id="replace"></div>
             </div>
+            
+            {/* Bar Chart for Calories */}
+            <h2>Calories Consumed Over Last 7 Days</h2>
+            <ResponsiveContainer width="80%" height={300}>
+                <BarChart data={calorieData}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="Calories" fill="#8884d8" />
+                </BarChart>
+            </ResponsiveContainer>
+            
+            {/* Pie Chart for Macros */}
+            <h2>Protein vs Fat Distribution</h2>
+            <ResponsiveContainer width="50%" height={300}>
+                <PieChart>
+                    <Pie data={macroData} dataKey="value" nameKey="name" outerRadius={100} label>
+                        <Cell key="Protein" fill="#82ca9d" />
+                        <Cell key="Fat" fill="#ff7300" />
+                    </Pie>
+                    <Tooltip />
+                    <Legend />
+                </PieChart>
+            </ResponsiveContainer>
         </div>
     );
 }

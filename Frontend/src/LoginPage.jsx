@@ -35,6 +35,7 @@ const LoginPage = () => {
 
             if (response.status === 200) {
                 alert("Login Successful!");
+                localStorage.setItem("user", Email);
                 localStorage.setItem("token", response.data.accessToken);
                 console.log(localStorage.getItem("token"));
                 navigate("/homepage");

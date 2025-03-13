@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import Navbar from './Navbar.jsx';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer } from 'recharts';
+import Navbar from "./Navbar.jsx";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer } from "recharts";
 import axios from "axios";
 
 function Exercise() {
+    const [chartData, setChartData] = useState([]);
     const [activity, setActivity] = useState("");
-    const [weight, setWeight]  = useState("");
+    const [weight, setWeight] = useState("");
     const [duration, setDuration] = useState("");
     const [calories, setCalories] = useState("");
 
@@ -45,56 +46,82 @@ function Exercise() {
 
     useEffect(() => {
         async function fetchContent() {
-          try {
-            const response = await axios.get("http://localhost:5000/getLast7DaysData?email=user@example.com");
-            console.log("Fetched Data:", response.data);
-          } catch (error) {
-            console.error("Error fetching data:", error);
-          }
+            try {
+                const token = localStorage.getItem("token");
+                const response = await axios.get(`http://localhost:5000/getLast7DaysData?email=${localStorage.getItem("user")}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json"
+                    }
+                });
+                
+                const formattedData = response.data.map(item => ({
+                    date: new Date(item.date).toLocaleDateString(),
+                    burnedCalories: item.exercise.total_calories_burned,
+                }));
+
+                setChartData(formattedData);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
         }
-    
         fetchContent();
-      }, []);
+    }, []);
 
     return (
         <>
-        <Navbar /> <br/><br/><br/><br/>
-        <div id="ex" style={{ backgroundColor: "purple", color: "white", outlineStyle: "solid", outlineColor: "green", outlineOffset: "2px" }}>
-            <br/>
-            <h1>EXERCISE CALORIES BURNED</h1>
-            <br/>
-            <form onSubmit={logger}>
-                <input 
-                    style={{ padding: '0.5rem', marginBottom: '1rem', border: '1px solid #ced4da', borderRadius: '3px', marginRight: "35px", textAlign: "center" }} 
-                    id="activity" 
-                    placeholder="Exercise/Activity" 
-                    value={activity} 
-                    onChange={(e) => setActivity(e.target.value)} 
-                    required 
-                /> 
-                <input 
-                    style={{ padding: '0.5rem', marginBottom: '1rem', border: '1px solid #ced4da', borderRadius: '3px', textAlign: "center" }} 
-                    id="weight" 
-                    placeholder="Weight (kg)" 
-                    value={weight} 
-                    onChange={(e) => setWeight(e.target.value)} 
-                    required 
-                /><br /> <br/>
-                <input 
-                    style={{ padding: '0.5rem', marginBottom: '1rem', border: '1px solid #ced4da', borderRadius: '3px', textAlign: "center" }} 
-                    id="duration" 
-                    placeholder="Duration (mins)" 
-                    value={duration} 
-                    onChange={(e) => setDuration(e.target.value)} 
-                    required 
-                /><br /> <br />
-                <button style={{ padding: '0.5rem', marginBottom: '1rem', border: '1px solid #ced4da', borderRadius: '3px', textAlign: "center" }} type="submit">Fetch</button><br />
-                <div id="replace1">{calories}</div><br />
-            </form>
-        </div>
+            <Navbar />
+            <br/><br/><br/><br/>
+            <div id="ex" style={{ backgroundColor: "purple", color: "white", outlineStyle: "solid", outlineColor: "green", outlineOffset: "2px" }}>
+                <br/>
+                <h1>EXERCISE CALORIES BURNED</h1>
+                <br/>
+                <form onSubmit={logger}>
+                    <input 
+                        style={{ padding: "0.5rem", marginBottom: "1rem", border: "1px solid #ced4da", borderRadius: "3px", marginRight: "35px", textAlign: "center" }} 
+                        id="activity" 
+                        placeholder="Exercise/Activity" 
+                        value={activity} 
+                        onChange={(e) => setActivity(e.target.value)} 
+                        required 
+                    /> 
+                    <input 
+                        style={{ padding: "0.5rem", marginBottom: "1rem", border: "1px solid #ced4da", borderRadius: "3px", textAlign: "center" }} 
+                        id="weight" 
+                        placeholder="Weight (kg)" 
+                        value={weight} 
+                        onChange={(e) => setWeight(e.target.value)} 
+                        required 
+                    /><br /> <br/>
+                    <input 
+                        style={{ padding: "0.5rem", marginBottom: "1rem", border: "1px solid #ced4da", borderRadius: "3px", textAlign: "center" }} 
+                        id="duration" 
+                        placeholder="Duration (mins)" 
+                        value={duration} 
+                        onChange={(e) => setDuration(e.target.value)} 
+                        required 
+                    /><br /> <br />
+                    <button style={{ padding: "0.5rem", marginBottom: "1rem", border: "1px solid #ced4da", borderRadius: "3px", textAlign: "center" }} type="submit">Fetch</button><br />
+                    <div id="replace1">{calories}</div><br />
+                </form>
+            </div>
+
+            {/* Chart Section */}
+            <div style={{ width: "80%", margin: "20px auto" }}>
+                <h2>Calories Expended Over Last 7 Days</h2>
+                <ResponsiveContainer width="100%" height={300}>
+                    <BarChart data={chartData}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="date" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Bar dataKey="burnedCalories" fill="#82ca9d" name="Calories Burned" />
+                    </BarChart>
+                </ResponsiveContainer>
+            </div>
         </>
     );
 }
 
 export default Exercise;
-                        
