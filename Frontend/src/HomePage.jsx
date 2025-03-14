@@ -3,10 +3,12 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import "./css/homePage.css";
+import NewUser from "./newUser";
 
 const HomePage = () => {
   const navigate = useNavigate();  
   const [chartData, setChartData] = useState([]);
+  const [isNewUser, setIsNewUser] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,7 +24,8 @@ const HomePage = () => {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json"
           }
-        });        
+        });
+
         const formattedData = response.data.map(item => ({
           date: new Date(item.date).toLocaleDateString(),
           consumedCalories: item.nutrition.consumed_energy_kcal,
@@ -30,7 +33,12 @@ const HomePage = () => {
         }));
         setChartData(formattedData);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        if (error.response) {
+          console.warn("User data not found. Redirecting to new user setup.");
+          setIsNewUser(true);
+        } else {
+          console.error("Error fetching data:", error);
+        }
       }
     };
     fetchData();
@@ -40,6 +48,31 @@ const HomePage = () => {
     localStorage.removeItem("token");  
     navigate("/");  
   };
+
+  if (isNewUser) {
+    return (
+      <div>
+        <div className="header">
+        <nav className="navbar">
+          <img src="/assets/favicon.png" alt="Logo" />
+          <span style={{ marginRight: '1vw' }}> HealthApp </span>
+          <ul className="Items">
+            <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/homepage"); }}>Overview</a></li>
+            <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/exercise"); }}>Exercise Monitoring</a></li>
+            <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/bmi"); }}>BMI Calculator</a></li>
+            <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/nutrient"); }}> Nutrient Tracking</a></li>
+          </ul>
+          <span style={{ marginLeft: "3vw", fontSize: "1.5vw" }}>
+            <a href="/" onClick={handleLogout}>Logout</a>  
+          </span>
+        </nav>
+      </div>
+
+      <NewUser/>
+      
+    </div>
+    );
+  }
 
   return (
     <div>
