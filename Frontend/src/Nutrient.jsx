@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar.jsx';
-import './css/nutrientPage.css'; // Importing external CSS
+import './css/nutrientPage.css';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import axios from "axios";
+import NewUser from "./NewUser";
 
 function Nutrient() {
     const [url, setUrl] = useState(null);
     const [inputFields, setInputFields] = useState([{ name: '', weight: '' }]);
     const [calorieData, setCalorieData] = useState([]);
     const [macroData, setMacroData] = useState([]);
+    const [isNewUser, setIsNewUser] = useState(false);
     const userEmail = localStorage.getItem("Email");
     const authToken = localStorage.getItem("AuthToken");
 
@@ -16,7 +18,7 @@ function Nutrient() {
         event.preventDefault();
         if (inputFields.length === 0) return;
 
-        const food = encodeURIComponent(inputFields[0].name); // Taking only the first food item for now
+        const food = encodeURIComponent(inputFields[0].name);
         const finalUrl = `http://localhost:5000/nutrient?foodName=${food}`;
         setUrl(finalUrl);
     }
@@ -77,6 +79,11 @@ function Nutrient() {
 
             console.log("Fetched Data:", response.data);
             
+            if (!response.data || response.data.length === 0) {
+                setIsNewUser(true);
+                return;
+            }
+
             const formattedCalorieData = response.data.map((entry, index) => ({
                 name: `Day ${index + 1}`,
                 Calories: entry.nutrition.consumed_energy_kcal
@@ -89,11 +96,21 @@ function Nutrient() {
                 { name: "Fat", value: latestEntry.consumed_fat_g }
             ]);
           } catch (error) {
-            console.error("Error fetching data:", error);
+            console.warn("User data not found. Redirecting to new user setup.");
+            setIsNewUser(true);
           }
         }
         fetchContent();
-      }, [userEmail, authToken]);
+    }, [userEmail, authToken]);
+
+    if (isNewUser) {
+        return (
+            <div>
+                <Navbar />  
+                <NewUser />
+            </div>
+        );
+    }
 
     return (
         <div>

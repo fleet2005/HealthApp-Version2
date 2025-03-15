@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from "./Navbar.jsx";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer } from "recharts";
 import axios from "axios";
+import NewUser from "./NewUser";
 
 function Exercise() {
     const [chartData, setChartData] = useState([]);
@@ -9,6 +10,9 @@ function Exercise() {
     const [weight, setWeight] = useState("");
     const [duration, setDuration] = useState("");
     const [calories, setCalories] = useState("");
+    const [isNewUser, setIsNewUser] = useState(false);
+    const userEmail = localStorage.getItem("Email");
+    const authToken = localStorage.getItem("AuthToken");
 
     async function logger(event) {
         event.preventDefault();
@@ -55,6 +59,11 @@ function Exercise() {
                     }
                 });
                 
+                if (!response.data || response.data.length === 0) {
+                    setIsNewUser(true);
+                    return;
+                }
+
                 const formattedData = response.data.map(item => ({
                     date: new Date(item.date).toLocaleDateString(),
                     burnedCalories: item.exercise.total_calories_burned,
@@ -62,11 +71,21 @@ function Exercise() {
 
                 setChartData(formattedData);
             } catch (error) {
-                console.error("Error fetching data:", error);
+                console.warn("User data not found. Redirecting to new user setup.");
+                setIsNewUser(true);
             }
         }
         fetchContent();
-    }, []);
+    }, [userEmail, authToken]);
+
+    if (isNewUser) {
+        return (
+            <div>
+                <Navbar />
+                <NewUser />
+            </div>
+        );
+    }
 
     return (
         <>
