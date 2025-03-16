@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from "./Navbar.jsx";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer } from "recharts";
 import axios from "axios";
-import NewUser from "./NewUser";
+import NewUser from "./NewUser.jsx";
 
 function Exercise() {
     const [chartData, setChartData] = useState([]);

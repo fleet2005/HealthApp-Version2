@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import "./css/homePage.css";
-import NewUser from "./newUser";
+import NewUser from "./NewUser.jsx";
 
 const HomePage = () => {
   const navigate = useNavigate();  
