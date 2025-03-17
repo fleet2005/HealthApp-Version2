@@ -3,6 +3,7 @@ import Navbar from "./Navbar.jsx";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer } from "recharts";
 import axios from "axios";
 import NewUser from "./NewUser.jsx";
+import ChatBot from "./chatbot/chatbot/ChatBot";
 import "./css/exercise.css";
 
 function Exercise() {
@@ -14,6 +15,7 @@ function Exercise() {
     const [isNewUser, setIsNewUser] = useState(false);
     const userEmail = localStorage.getItem("Email");
     const authToken = localStorage.getItem("AuthToken");
+    const [isChatbotVisible, setIsChatbotVisible] = useState(false);
 
     async function logger(event) {
         event.preventDefault();
@@ -119,6 +121,16 @@ function Exercise() {
                 </ResponsiveContainer>
             </div>
             <br/>
+            <button 
+                className="chatbot-toggle-btn"
+                onClick={() => setIsChatbotVisible(!isChatbotVisible)}
+            >
+                {isChatbotVisible ? 'Hide Chatbot' : 'Show Chatbot'}
+            </button>
+            <ChatBot 
+                isVisible={isChatbotVisible} 
+                onToggle={() => setIsChatbotVisible(!isChatbotVisible)} 
+            />
         </>
     );
 }
