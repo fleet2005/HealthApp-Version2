@@ -1,11 +1,25 @@
-/* Nutrient.css */
-#fetching {
-    background-color: purple;
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+#ex {
+    width: 80vw;
+    margin: 5vh auto;
+    background-color: rgb(106, 13, 173); /* Using the updated purple color */
+    margin-top: 5vw;
     color: white;
-    outline-style: solid;
-    outline-color: red;
-    outline-offset: 0.5vh;
     padding: 2vh;
+    border-radius: 1vw;
+    text-align: center;
+    box-shadow: 0 0.4vw 0.8vw rgba(0, 0, 0, 0.2);
+}
+
+h1, h2 {
     text-align: center;
 }
 
@@ -13,31 +27,85 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2vh;
 }
 
 input {
-    text-align: center;
+    width: 60vw;
+    height: 2vw;
     padding: 1vh;
-    margin-bottom: 1.5vh;
-    border: 0.2vh solid #ced4da;
-    border-radius: 0.5vh;
-    width: 50vw; /* Adjust input width relative to viewport */
+    margin-bottom: 2vh;
+    border: 0.1vw solid #ccc;
+    border-radius: 0.5vw;
+    text-align: center;
 }
 
 button {
-    padding: 1vh;
-    border: 0.2vh solid #ced4da;
-    border-radius: 0.5vh;
+    background-color: rgb(106, 13, 173); /* Updated purple color for button */
+    color: white;
+    padding: 1vh 2vw;
+    border: none;
+    border-radius: 0.5vw;
     cursor: pointer;
-    font-size: 2vh;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #ddd;
+    background-color: #7a1c9c; /* Darker shade of purple on hover */
 }
 
-#replace {
-    margin-top: 2vh;
-    font-size: 2vh;
+/* Add Item Button (Green) */
+button.add-item {
+    background-color: #28a745;
+}
+
+button.add-item:hover {
+    background-color: #218838;
+}
+
+/* Remove Item Button (Red) */
+button.remove-item {
+    background-color: #dc3545;
+}
+
+button.remove-item:hover {
+    background-color: #c82333;
+}
+
+#replace1 {
+    font-size: 1.2vw;
+    font-weight: bold;
+    margin-top: 1vh;
+}
+
+/* Chart Section */
+.chart-container {
+    width: 80vw;
+    margin: 2vh auto;
+    background: white; /* Set chart background to white */
+    padding: 2vh;
+    border-radius: 1vw;
+    box-shadow: 0 0.4vw 0.8vw rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center-align the chart */
+}
+
+/* Ensure the Bar Chart and Pie Chart are centered */
+.chart-container, .recharts-responsive-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recharts-bar-rectangle {
+    fill: #dc3545; /* Red color for bars */
+}
+
+.recharts-tooltip-item {
+    color: rgb(106, 13, 173); /* Matching tooltip text color */
+}
+
+/* Pie chart container centering */
+.pie-chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

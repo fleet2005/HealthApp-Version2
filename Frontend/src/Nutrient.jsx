@@ -91,7 +91,7 @@ function Nutrient() {
             setCalorieData(formattedCalorieData);
             
             const latestEntry = response.data[response.data.length - 1].nutrition;
-            setMacroData([
+            setMacroData([ 
                 { name: "Protein", value: latestEntry.consumed_protein_g },
                 { name: "Fat", value: latestEntry.consumed_fat_g }
             ]);
@@ -135,40 +135,45 @@ function Nutrient() {
                                 value={inputField.weight}
                                 onChange={event => handleInputChange(index, event)}
                             />
-                            <button type="button" onClick={() => handleRemoveFields(index)}>Remove</button>
+                            <button type="button" onClick={() => handleRemoveFields(index)} className="remove-item">Remove</button>
                         </div>
                     ))}  
-                    <button type="button" onClick={handleAddFields}>Add-Item</button>
+                    <button type="button" onClick={handleAddFields} className="add-item">Add-Item</button>
                     <button type="submit">Submit</button>
                 </form>
                 <div id="replace"></div>
             </div>
             
             {/* Bar Chart for Calories */}
-            <h2>Calories Consumed Over Last 7 Days</h2>
-            <ResponsiveContainer width="80%" height={300}>
-                <BarChart data={calorieData}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="Calories" fill="#8884d8" />
-                </BarChart>
-            </ResponsiveContainer>
+            <h2>Calories Consumed: Last 7 Entries</h2>
+            <div className="chart-container">
+                <ResponsiveContainer width="80%" height={300}>
+                    <BarChart data={calorieData}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Bar dataKey="Calories" fill="#dc3545" /> {/* Red bars */}
+                    </BarChart>
+                </ResponsiveContainer>
+            </div>
             
             {/* Pie Chart for Macros */}
             <h2>Protein vs Fat Distribution</h2>
-            <ResponsiveContainer width="50%" height={300}>
-                <PieChart>
-                    <Pie data={macroData} dataKey="value" nameKey="name" outerRadius={100} label>
-                        <Cell key="Protein" fill="#82ca9d" />
-                        <Cell key="Fat" fill="#ff7300" />
-                    </Pie>
-                    <Tooltip />
-                    <Legend />
-                </PieChart>
-            </ResponsiveContainer>
+            <div className="chart-container">
+                <ResponsiveContainer width="50%" height={300}>
+                    <PieChart>
+                        <Pie data={macroData} dataKey="value" nameKey="name" outerRadius={100} label>
+                            <Cell key="Protein" fill="#82ca9d" />
+                            <Cell key="Fat" fill="#ff7300" />
+                        </Pie>
+                        <Tooltip />
+                        <Legend />
+                    </PieChart>
+                </ResponsiveContainer>
+            </div>
+            <br/>
         </div>
     );
 }

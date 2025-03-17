@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Navbar from './Navbar.jsx';
+import './css/bmi.css';  // Import the new CSS file
 
 function Bmi() {
   const [height, setHeight] = useState(null);
@@ -8,38 +9,31 @@ function Bmi() {
   function calculate(event) {
     event.preventDefault();
     const result = (weight / (height * height)) * 10000;
-    document.getElementById("replace2").innerText = result;
-
+    document.getElementById("replace2").innerText = result.toFixed(2);
+  
     const categories = ["underweight", "healthyweight", "overweight", "obesity"];
     categories.forEach(category => {
-      const elements = document.getElementsByClassName(category);
-      for (let i = 0; i < elements.length; i++) {
-        elements[i].style.backgroundColor = "";
-      }
+      document.querySelectorAll("." + category).forEach(el => {
+        el.classList.remove(
+          "highlight-underweight",
+          "highlight-healthyweight",
+          "highlight-overweight",
+          "highlight-obesity"
+        );
+      });
     });
-
+  
     if (result < 18.5) {
-      const elements = document.getElementsByClassName("underweight");
-      for (let i = 0; i < elements.length; i++) {
-        elements[i].style.backgroundColor = "red";
-      }
+      document.querySelectorAll(".underweight").forEach(el => el.classList.add("highlight-underweight"));
     } else if (result >= 18.5 && result <= 24.9) {
-      const elements = document.getElementsByClassName("healthyweight");
-      for (let i = 0; i < elements.length; i++) {
-        elements[i].style.backgroundColor = "green";
-      }
+      document.querySelectorAll(".healthyweight").forEach(el => el.classList.add("highlight-healthyweight"));
     } else if (result >= 25 && result <= 29.9) {
-      const elements = document.getElementsByClassName("overweight");
-      for (let i = 0; i < elements.length; i++) {
-        elements[i].style.backgroundColor = "orange";
-      }
+      document.querySelectorAll(".overweight").forEach(el => el.classList.add("highlight-overweight"));
     } else {
-      const elements = document.getElementsByClassName("obesity");
-      for (let i = 0; i < elements.length; i++) {
-        elements[i].style.backgroundColor = "red";
-      }
+      document.querySelectorAll(".obesity").forEach(el => el.classList.add("highlight-obesity"));
     }
   }
+  
 
   function handler(event) {
     if (event.target.id === "height") {
@@ -49,60 +43,50 @@ function Bmi() {
     }
   }
 
-  const tableCellStyle = {
-    border: '1px solid #ddd',
-    padding: '2vw',
-    backgroundColor: '#f2f2f2',
-    textAlign : "center",
-  };
-
   return (
     <>
-      <Navbar /> <br/><br/><br/><br/>
-      <div id ="bmi" style={{backgroundColor: "purple" , color:"white", outlineStyle: "solid", outlineColor:"black", outlineOffset:"2px"}}>
-      <br/>
-      <h1 align="center">BMI CALCULATOR & INDICATOR</h1>
-      <br/>
-      <form onSubmit={calculate}>
-        <input style={{ padding: '0.5rem', marginBottom: '1rem', border: '1px solid #ced4da', borderRadius: '3px', marginRight: "35px", textAlign:"center"}} id="height" onChange={handler} placeholder="Height (in cms)" /> <br /><br />
-        <input style={{ padding: '0.5rem', marginBottom: '1rem', border: '1px solid #ced4da', borderRadius: '3px', marginRight: "35px",textAlign:"center"}} id="weight" onChange={handler} placeholder="Weight (in kgs)"/> <br /><br />
-        <button style={{padding: '0.5rem', marginBottom: '1rem', border: '1px solid #ced4da', borderRadius: '3px',marginRight: "35px"}} type="submit">Submit</button> <br /><br />
-      </form>
-      </div><br/>
-      <br/>
-      <div id="replace2"> </div>
+      <Navbar />
+      <div id="bmi">
+        <h1>BMI CALCULATOR & INDICATOR</h1>
+        <form onSubmit={calculate}>
+          <input id="height" onChange={handler} placeholder="Height (in cm)" />
+          <input id="weight" onChange={handler} placeholder="Weight (in kg)" />
+          <button type="submit">Calculate BMI</button>
+        </form>
+      </div>
 
-      <div style={{ color:" rgb(108,40,97) ", outlineStyle: "solid", outlineColor:"black", outlineOffset:"2px"}}>
-      <div style={{ width: '90vw', margin: '0 auto' }}>
-        <h2 style={{ textAlign: 'center',color:"white",backgroundColor: "Purple"  }}>BMI Categories and Weight Status Mapping</h2> 
-        <table style={{ width: '100%', borderCollapse: 'collapse', align:"center" }}>
+      <div id="replace2"></div>
+
+      <div className="bmi-table-container">
+        <h2>BMI Categories and Weight Status Mapping</h2>
+        <table>
           <thead>
             <tr>
-              <th style={{tableCellStyle, color:"black"}}>BMI</th>
-              <th style={{tableCellStyle, color:"black"}}>Weight Status</th>
+              <th>BMI</th>
+              <th>Weight Status</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td className="underweight" style={tableCellStyle}>Below 18.5</td>
-              <td className="underweight" style={tableCellStyle}>Underweight</td>
+              <td className="underweight">Below 18.5</td>
+              <td className="underweight">Underweight</td>
             </tr>
             <tr>
-              <td className="healthyweight" style={tableCellStyle}>18.5—24.9</td>
-              <td className="healthyweight" style={tableCellStyle}>Healthy Weight</td>
+              <td className="healthyweight">18.5—24.9</td>
+              <td className="healthyweight">Healthy Weight</td>
             </tr>
             <tr>
-              <td className="overweight" style={tableCellStyle}>25.0—29.9</td>
-              <td className="overweight" style={tableCellStyle}>Overweight</td>
+              <td className="overweight">25.0—29.9</td>
+              <td className="overweight">Overweight</td>
             </tr>
             <tr>
-              <td className="obesity" style={tableCellStyle}>30.0 and Above</td>
-              <td className="obesity" style={tableCellStyle}>Obesity</td>
+              <td className="obesity">30.0 and Above</td>
+              <td className="obesity">Obesity</td>
             </tr>
           </tbody>
         </table>
       </div>
-    </div>
+      <br/>
     </>
   );
 }
