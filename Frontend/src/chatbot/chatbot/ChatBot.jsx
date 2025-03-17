@@ -30,20 +30,64 @@ const ChatBot = ({ isVisible, onToggle }) => {
 
         try {
             // Make API request to backend
-            const response = await axios.post('http://127.0.0.1:8000/chatbot/', {
-                lang: "English", // Default language
-                detail: inputMessage
+            const response = await axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/chatbot/',
+                data: {
+                    lang: "English",
+                    detail: inputMessage
+                },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
             });
+
+            console.log('Response:', response.data); // Debug log
+            console.log('Response type:', typeof response.data);
+            console.log('Response keys:', Object.keys(response.data));
+
+            // Safely extract the response text
+            let responseText;
+            if (typeof response.data === 'object') {
+                if (response.data.result) {
+                    responseText = typeof response.data.result === 'string' 
+                        ? response.data.result 
+                        : JSON.stringify(response.data.result);
+                } else if (response.data.message) {
+                    responseText = typeof response.data.message === 'string'
+                        ? response.data.message
+                        : JSON.stringify(response.data.message);
+                } else if (response.data.response) {
+                    responseText = typeof response.data.response === 'string'
+                        ? response.data.response
+                        : JSON.stringify(response.data.response);
+                } else {
+                    responseText = "I received your message but couldn't process it properly.";
+                }
+            } else {
+                responseText = String(response.data);
+            }
 
             // Add bot response to chat
             const botMessage = {
-                text: response.data.response,
+                text: responseText,
                 sender: 'bot',
                 timestamp: new Date().toLocaleTimeString()
             };
             setMessages(prev => [...prev, botMessage]);
         } catch (error) {
-            console.error('Error sending message:', error);
+            console.error('Error details:', {
+                message: error.message,
+                response: error.response?.data,
+                status: error.response?.status,
+                config: {
+                    url: error.config?.url,
+                    method: error.config?.method,
+                    data: error.config?.data
+                }
+            });
+            
             const errorMessage = {
                 text: "Sorry, I encountered an error. Please try again.",
                 sender: 'bot',
