@@ -1,10 +1,14 @@
 import joblib
 from rapidfuzz import process  # Fuzzy matching
 import random
+import os
+
+# Get the directory where prediction.py is located
+current_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Load trained Markov Chain model & food list
-transitions = joblib.load("ML/markov_food_model.pkl")
-food_list = joblib.load("ML/food_list.pkl")
+transitions = joblib.load(os.path.join(current_dir, "markov_food_model.pkl"))
+food_list = joblib.load(os.path.join(current_dir, "food_list.pkl"))
 
 def correct_food_name(food, choices):
     """Corrects food name using fuzzy matching (case-insensitive)."""
@@ -27,6 +31,7 @@ def predict_next_foods(current_food, top_n=2):
     return [food for food, prob in next_foods[:top_n]]
 
 # Example usage
-current_food = "bread"  # Even if there's a typo or different case, it should correct
-suggestions = predict_next_foods(current_food)
-print(f"Suggested foods to pair with {current_food}: {suggestions}")
+if __name__ == "__main__":
+    current_food = "bread"  # Even if there's a typo or different case, it should correct
+    suggestions = predict_next_foods(current_food)
+    print(f"Suggested foods to pair with {current_food}: {suggestions}")
