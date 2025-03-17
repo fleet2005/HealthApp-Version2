@@ -72,12 +72,30 @@ const LoginPage = () => {
         <div className="login-page">
             <div className="login-box">
                 <form>
-                    <button className = "switch-btn" type="button" onClick={handleClick}>
-                        {Visible ? "Switch to Sign Up" : "Switch to Sign In"}
-                    </button>
+                <button
+                    className="switch-btn"
+                    type="button"
+                    onClick={handleClick}
+                    style={{
+                        backgroundColor: "#6C757D",
+                        color: "white",
+                        fontSize: "1.2vw",
+                        border: "none",
+                        borderRadius: "1vw",
+                        marginTop : "-2vw",
+                        width : "15vw",
+                        cursor: "pointer",
+                        transition: "background-color 0.3s",
+                    }}
+                    onMouseOver={(e) => (e.target.style.backgroundColor = "#0056b3")}
+                    onMouseOut={(e) => (e.target.style.backgroundColor = "#007BFF")}
+                >
+                    {Visible ? "Switch to Sign Up" : "Switch to Sign In"}
+                </button>
+
                     {Visible ? (
                         <>
-                            <h2>Sign In</h2>
+                            <h2>Sign In</h2> <br/>
                             <label>Email Id:</label>
                             <input
                                 type="email"
@@ -95,13 +113,33 @@ const LoginPage = () => {
                                 onKeyDown={handleKeyPress}
                                 required
                             />
-                            <button type="button" onClick={handleLogin}>
+                            <br/>
+                            <button
+                                type="button"
+                                onClick={handleLogin}
+                                style={{
+                                    backgroundColor: "#28A745",
+                                    color: "white",
+                                    marginBottom : "-1vw",
+                                    fontSize: "1.2vw",
+                                    width : "8vw",
+                                    border: "none",
+                                    borderRadius: "1vw",
+                                    cursor: "pointer",
+                                    transition: "background-color 0.3s",
+                                }}
+                                onMouseOver={(e) => (e.target.style.backgroundColor = "#45a049")}
+                                onMouseOut={(e) => (e.target.style.backgroundColor = "#4CAF50")}
+                            >
                                 Login
                             </button>
+
+
                         </>
                     ) : (
                         <>
                             <h2>Sign Up</h2>
+                            <br/>
                             <label>Email Id:</label>
                             <input
                                 type="email"
@@ -119,9 +157,28 @@ const LoginPage = () => {
                                 onKeyDown={handleKeyPress}
                                 required
                             />
-                            <button type="button" onClick={handleRegister}>
+                            <br/>
+                            <button
+                                type="button"
+                                onClick={handleRegister}
+                                style={{
+                                    backgroundColor: "#28A745",
+                                    color: "white",
+                                    marginBottom: "-1vw",
+                                    height : "3.5vw",
+                                    fontSize: "1.2vw",
+                                    width: "8.5vw",
+                                    border: "none",
+                                    borderRadius: "1vw",
+                                    cursor: "pointer",
+                                    transition: "background-color 0.3s",
+                                }}
+                                onMouseOver={(e) => (e.target.style.backgroundColor = "#45a049")}
+                                onMouseOut={(e) => (e.target.style.backgroundColor = "#4CAF50")}
+                            >
                                 Register
                             </button>
+
                         </>
                     )}
                 </form>
