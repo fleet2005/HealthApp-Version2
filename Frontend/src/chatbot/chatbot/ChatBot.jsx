@@ -42,18 +42,16 @@ const ChatBot = ({ isVisible, onToggle }) => {
                     'Accept': 'application/json'
                 }
             });
+            console.log(response.data)
 
-            console.log('Response:', response.data); // Debug log
-            console.log('Response type:', typeof response.data);
-            console.log('Response keys:', Object.keys(response.data));
-
+           
             // Safely extract the response text
             let responseText;
             if (typeof response.data === 'object') {
-                if (response.data.result) {
-                    responseText = typeof response.data.result === 'string' 
-                        ? response.data.result 
-                        : JSON.stringify(response.data.result);
+                if (response.data.response.result) {
+                    responseText = typeof response.data.response.result === 'string' 
+                        ? response.data.response.result 
+                        : JSON.stringify(response.data.response.result);
                 } else if (response.data.message) {
                     responseText = typeof response.data.message === 'string'
                         ? response.data.message
