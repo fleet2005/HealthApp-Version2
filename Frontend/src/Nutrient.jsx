@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Navbar from './Navbar.jsx';
 import './css/nutrientPage.css';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import axios from "axios";
 import NewUser from "./NewUser.jsx";
+import debounce from 'lodash/debounce';
 
 function Nutrient() {
     const [url, setUrl] = useState(null);
@@ -11,8 +12,45 @@ function Nutrient() {
     const [calorieData, setCalorieData] = useState([]);
     const [macroData, setMacroData] = useState([]);
     const [isNewUser, setIsNewUser] = useState(false);
+    const [prediction, setPrediction] = useState("rice");
     const userEmail = localStorage.getItem("Email");
     const authToken = localStorage.getItem("AuthToken");
+
+    // Function to fetch prediction
+    const fetchPrediction = async (foodName) => {
+        if (!foodName) return; // Don't fetch if food name is empty
+        try {
+            console.log("Fetching prediction for:", foodName); // Debug log
+            
+            // Use the proxied URL
+            const response = await axios.post('http://127.0.0.1:8000/predict/', {
+                food_name: foodName
+            }, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            
+            console.log("Prediction response:", response.data); // Debug log
+            
+            if (response.data.predictions && response.data.predictions.length > 0) {
+                setPrediction(response.data.predictions[0]);
+            } else {
+                setPrediction("No prediction available");
+            }
+        } catch (error) {
+            console.error('Error fetching prediction:', error);
+            setPrediction("Error getting prediction");
+        }
+    };
+
+    // Debounced version of fetchPrediction
+    const debouncedFetchPrediction = useCallback(
+        debounce((foodName) => {
+            fetchPrediction(foodName);
+        }, 500),
+        []
+    );
 
     function logger(event) { 
         event.preventDefault();
@@ -21,12 +59,22 @@ function Nutrient() {
         const food = encodeURIComponent(inputFields[0].name);
         const finalUrl = `http://localhost:5000/nutrient?foodName=${food}`;
         setUrl(finalUrl);
+        
+        // Fetch new prediction after adding food
+        fetchPrediction(food);
     }
 
     const handleInputChange = (index, event) => {
         const values = [...inputFields];
         values[index][event.target.name] = event.target.value;
         setInputFields(values);
+
+        // If the name field is being changed, trigger prediction
+        if (event.target.name === 'name') {
+            const newValue = event.target.value;
+            console.log("Input changed to:", newValue); // Debug log
+            debouncedFetchPrediction(newValue);
+        }
     };
 
     const handleAddFields = () => {
@@ -36,6 +84,29 @@ function Nutrient() {
     const handleRemoveFields = (index) => {
         setInputFields(inputFields.filter((_, i) => i !== index));
     };
+
+    const handlePredictionClick = () => {
+        if (prediction === "No prediction available" || prediction === "Error getting prediction") {
+            return; // Don't add invalid predictions
+        }
+        setInputFields([...inputFields, { name: prediction, weight: '1' }]);
+        // Fetch new prediction after adding the predicted food
+        fetchPrediction(prediction);
+    };
+
+    // Cleanup debounced function on component unmount
+    useEffect(() => {
+        return () => {
+            debouncedFetchPrediction.cancel();
+        };
+    }, [debouncedFetchPrediction]);
+
+    // Initial prediction fetch
+    useEffect(() => {
+        if (inputFields[0]?.name) {
+            fetchPrediction(inputFields[0].name);
+        }
+    }, []);
 
     useEffect(() => {
         async function fetchData() {
@@ -138,7 +209,22 @@ function Nutrient() {
                             <button type="button" onClick={() => handleRemoveFields(index)} className="remove-item">Remove</button>
                         </div>
                     ))}  
-                    <button type="button" onClick={handleAddFields} className="add-item">Add-Item</button>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <button type="button" onClick={handleAddFields} className="add-item">Add-Item</button>
+                        <span 
+                            onClick={handlePredictionClick}
+                            style={{ 
+                                cursor: prediction === "No prediction available" || prediction === "Error getting prediction" ? 'default' : 'pointer',
+                                opacity: 0.7,
+                                padding: '5px 10px',
+                                border: '1px solid #ccc',
+                                borderRadius: '4px',
+                                backgroundColor: '#f8f9fa'
+                            }}
+                        >
+                            Suggested: {prediction}
+                        </span>
+                    </div>
                     <button type="submit">Submit</button>
                 </form>
                 <div id="replace"></div>
@@ -154,7 +240,7 @@ function Nutrient() {
                         <YAxis />
                         <Tooltip />
                         <Legend />
-                        <Bar dataKey="Calories" fill="#dc3545" /> {/* Red bars */}
+                        <Bar dataKey="Calories" fill="#dc3545" />
                     </BarChart>
                 </ResponsiveContainer>
             </div>
