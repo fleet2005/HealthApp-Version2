@@ -28,7 +28,7 @@ const LoginPage = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:5000/signin", {
+            const response = await axios.post("https://health-app-version2-backend.vercel.app/signin", {
                 email: Email,
                 password: Password,
             });
@@ -51,7 +51,7 @@ const LoginPage = () => {
     const handleRegister = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:5000/signup", {
+            const response = await axios.post("https://health-app-version2-backend.vercel.app/signup", {
                 email: Email,
                 password: Password,
             });
