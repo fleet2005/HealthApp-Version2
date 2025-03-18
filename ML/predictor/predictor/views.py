@@ -40,6 +40,21 @@ def predict_food(request):
         logger.error(f"Prediction Error: {str(e)}", exc_info=True)  # Log full traceback
         return JsonResponse({'error': 'Internal Server Error'}, status=500)
     
+@require_http_methods(["GET"])
+def predict_food_get(request):
+    try:
+        food_name = request.GET.get('food_name')
+        
+        if not food_name:
+            return JsonResponse({'error': 'food_name is required'}, status=400)
+            
+        predictions = predict_next_foods(food_name)
+        
+        return JsonResponse({'food_name': food_name, 'predictions': predictions})
+        
+    except Exception as e:
+        logger.error(f"Prediction Error: {str(e)}", exc_info=True)  # Log full traceback
+        return JsonResponse({'error': 'Internal Server Error'}, status=500)
 
 def health_check(request):
     return JsonResponse({"status": "Server is running"}, status=200)
