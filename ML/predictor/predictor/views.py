@@ -36,3 +36,7 @@ def predict_food(request):
         return JsonResponse({
             'error': str(e)
         }, status=500)
+    
+
+def health_check(request):
+    return JsonResponse({"status": "Server is running"}, status=200)
