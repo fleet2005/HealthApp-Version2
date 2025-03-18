@@ -3,7 +3,7 @@ import Navbar from './Navbar.jsx';
 import './css/nutrientPage.css';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import axios from "axios";
-import NewUser from "@/NewUser.jsx";
+import NewUser from "./components/NewUser.jsx";
 import debounce from 'lodash/debounce';
 
 function Nutrient() {
