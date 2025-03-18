@@ -3,7 +3,7 @@ import joblib
 from rapidfuzz import process  # For fuzzy matching
 
 # Load dataset
-df = pd.read_csv("ML/patterns.csv")
+df = pd.read_csv("ML/predictor/patterns.csv")
 
 # Convert to lowercase and split into lists
 df["FoodsConsumedTogether"] = df["FoodsConsumedTogether"].apply(lambda x: [food.lower() for food in x.split(", ")])

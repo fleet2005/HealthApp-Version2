@@ -7,7 +7,7 @@ import os
 
 # Add the root project directory to the sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../')))
-from ML.prediction import predict_next_foods
+from ML.predictor.prediction import predict_next_foods
 
 @csrf_exempt
 @require_http_methods(["POST"])
