@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: health-app-ml
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn predictor.wsgi
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: DJANGO_SETTINGS_MODULE
+        value: predictor.settings
+      - key: DEBUG
+        value: False 
