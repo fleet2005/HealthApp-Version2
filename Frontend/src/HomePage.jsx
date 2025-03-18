@@ -19,7 +19,7 @@ const HomePage = () => {
           navigate("/");
           return;
         }
-        const response = await axios.get(`http://localhost:5000/getLast7DaysData?email=${localStorage.getItem("user")}`, {
+        const response = await axios.get(`https://health-app-version2-backend.vercel.app/getLast7DaysData?email=${localStorage.getItem("user")}`, {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json"

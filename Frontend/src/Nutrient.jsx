@@ -57,7 +57,7 @@ function Nutrient() {
         if (inputFields.length === 0) return;
 
         const food = encodeURIComponent(inputFields[0].name);
-        const finalUrl = `http://localhost:5000/nutrient?foodName=${food}`;
+        const finalUrl = `https://health-app-version2-backend.vercel.app/nutrient?foodName=${food}`;
         setUrl(finalUrl);
         
         // Fetch new prediction after adding food
@@ -141,7 +141,7 @@ function Nutrient() {
         async function fetchContent() {
           try {
             const token = localStorage.getItem("token");
-            const response = await axios.get(`http://localhost:5000/getLast7DaysData?email=${localStorage.getItem("user")}`, {
+            const response = await axios.get(`https://health-app-version2-backend.vercel.app/getLast7DaysData?email=${localStorage.getItem("user")}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json"
