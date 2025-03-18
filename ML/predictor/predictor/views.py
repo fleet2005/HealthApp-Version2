@@ -4,12 +4,15 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 import sys
 import os
+import logging
+
+logger = logging.getLogger(__name__)
 
 # Add the root project directory to the sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../')))
 from ML.predictor.prediction import predict_next_foods
 
-@csrf_exempt
+
 @require_http_methods(["POST"])
 def predict_food(request):
     try:
@@ -32,10 +35,10 @@ def predict_food(request):
         return JsonResponse({
             'error': 'Invalid JSON data'
         }, status=400)
+    
     except Exception as e:
-        return JsonResponse({
-            'error': str(e)
-        }, status=500)
+        logger.error(f"Prediction Error: {str(e)}", exc_info=True)  # Log full traceback
+        return JsonResponse({'error': 'Internal Server Error'}, status=500)
     
 
 def health_check(request):
