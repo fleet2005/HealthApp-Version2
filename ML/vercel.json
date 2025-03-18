@@ -1,15 +1,20 @@
 {
     "version": 2,
     "builds": [
-        {
-            "src": "predictionspoint/wsgi.py",
-            "use": "@vercel/python"
-        }
+      {
+        "src": "predictor/predictor/wsgi.py",
+        "use": "@vercel/python"
+      },
+      {
+        "src": "staticfiles/**/*",
+        "use": "@vercel/static"
+      }
     ],
     "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "predictionspoint/wsgi.py"
-        }
+      {
+        "src": "/(.*)",
+        "dest": "predictor/predictor/wsgi.py"
+      }
     ]
-} 
+  }
+  
