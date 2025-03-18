@@ -1,9 +1,7 @@
 import "./css/newUser.css";
 
 const NewUser = () => {
-
   return (
-    
     <div className="new-user-container">
       <div className="welcome-card">
         <h1>Welcome to HealthApp! 🚀</h1>
@@ -21,4 +19,4 @@ const NewUser = () => {
   );
 };
 
-export default NewUser;
+export default NewUser; 
