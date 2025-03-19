@@ -24,3 +24,4 @@ urlpatterns = [
     path('chatbot/', mira_flow_endpoint, name='mira_flow_endpoint'),
     path("", health_check),
 ]
+
