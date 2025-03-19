@@ -1,0 +1,9 @@
+Django>=4.2,<5.0
+gunicorn
+whitenoise
+numpy
+pandas
+scikit-learn
+django-cors-headers
+rapidfuzz
+mira_sdk
