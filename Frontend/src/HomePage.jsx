@@ -4,11 +4,13 @@ import axios from "axios";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import "./css/homePage.css";
 import NewUser from "./components/NewUser.jsx";
+import ChatBot from "./chatbot/chatbot/ChatBot.jsx"; // Import ChatBot component
 
 const HomePage = () => {
   const navigate = useNavigate();  
   const [chartData, setChartData] = useState([]);
   const [isNewUser, setIsNewUser] = useState(false);
+  const [isChatbotVisible, setIsChatbotVisible] = useState(false); // New state for ChatBot visibility
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,24 +55,22 @@ const HomePage = () => {
     return (
       <div>
         <div className="header">
-        <nav className="navbar">
-          <img src="/assets/favicon.png" alt="Logo" />
-          <span style={{ marginRight: '1vw' }}> HealthApp </span>
-          <ul className="Items">
-            <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/homepage"); }}>Overview</a></li>
-            <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/exercise"); }}>Exercise Monitoring</a></li>
-            <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/bmi"); }}>BMI Calculator</a></li>
-            <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/nutrient"); }}> Nutrient Tracking</a></li>
-          </ul>
-          <span style={{ marginLeft: "3vw", fontSize: "1.5vw" }}>
-            <a href="/" onClick={handleLogout}>Logout</a>  
-          </span>
-        </nav>
+          <nav className="navbar">
+            <img src="/assets/favicon.png" alt="Logo" />
+            <span style={{ marginRight: '1vw' }}> HealthApp </span>
+            <ul className="Items">
+              <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/homepage"); }}>Overview</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/exercise"); }}>Exercise Monitoring</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/bmi"); }}>BMI Calculator</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/nutrient"); }}> Nutrient Tracking</a></li>
+            </ul>
+            <span style={{ marginLeft: "3vw", fontSize: "1.5vw" }}>
+              <a href="/" onClick={handleLogout}>Logout</a>  
+            </span>
+          </nav>
+        </div>
+        <NewUser/>
       </div>
-
-      <NewUser/>
-      
-    </div>
     );
   }
 
@@ -106,6 +106,20 @@ const HomePage = () => {
             <Line type="monotone" dataKey="burnedCalories" stroke="#82ca9d" name="Calories Burned" />
           </LineChart>
         </ResponsiveContainer>
+      </div>
+
+      {/* Chatbot Section */}
+      <div style={{ textAlign: "center", marginTop: "20px" }}>
+        <button 
+          className="chatbot-toggle-btn"
+          onClick={() => setIsChatbotVisible(!isChatbotVisible)}
+        >
+          {isChatbotVisible ? 'Hide Chatbot' : 'Show Chatbot'}
+        </button>
+        <ChatBot 
+          isVisible={isChatbotVisible} 
+          onToggle={() => setIsChatbotVisible(!isChatbotVisible)} 
+        />
       </div>
     </div>
   );

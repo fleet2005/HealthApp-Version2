@@ -5,6 +5,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend, Responsive
 import axios from "axios";
 import NewUser from "./components/NewUser.jsx";
 import debounce from 'lodash/debounce';
+import ChatBot from "./chatbot/chatbot/ChatBot.jsx"; // Import ChatBot component
 
 function Nutrient() {
     const [url, setUrl] = useState(null);
@@ -15,6 +16,7 @@ function Nutrient() {
     const [prediction, setPrediction] = useState("rice");
     const userEmail = localStorage.getItem("Email");
     const authToken = localStorage.getItem("AuthToken");
+    const [isChatbotVisible, setIsChatbotVisible] = useState(false); // New state for ChatBot visibility
 
     // Function to fetch prediction
     const fetchPrediction = async (foodName) => {
@@ -260,6 +262,20 @@ function Nutrient() {
                 </ResponsiveContainer>
             </div>
             <br/>
+
+            {/* Chatbot Section */}
+            <div style={{ textAlign: "center", marginTop: "20px" }}>
+                <button 
+                    className="chatbot-toggle-btn"
+                    onClick={() => setIsChatbotVisible(!isChatbotVisible)}
+                >
+                    {isChatbotVisible ? 'Hide Chatbot' : 'Show Chatbot'}
+                </button>
+                <ChatBot 
+                    isVisible={isChatbotVisible} 
+                    onToggle={() => setIsChatbotVisible(!isChatbotVisible)} 
+                />
+            </div>
         </div>
     );
 }

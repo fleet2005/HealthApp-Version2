@@ -1,10 +1,12 @@
 import { useState } from "react";
 import Navbar from './Navbar.jsx';
 import './css/bmi.css';  // Import the new CSS file
+import ChatBot from "./chatbot/chatbot/ChatBot.jsx"; // Import the ChatBot component
 
 function Bmi() {
   const [height, setHeight] = useState(null);
   const [weight, setWeight] = useState(null);
+  const [isChatbotVisible, setIsChatbotVisible] = useState(false); // New state for ChatBot visibility
 
   function calculate(event) {
     event.preventDefault();
@@ -34,7 +36,6 @@ function Bmi() {
     }
   }
   
-
   function handler(event) {
     if (event.target.id === "height") {
       setHeight(event.target.value);
@@ -87,6 +88,20 @@ function Bmi() {
         </table>
       </div>
       <br/>
+
+      {/* Chatbot Section */}
+      <div style={{ textAlign: "center", marginTop: "20px" }}>
+        <button 
+          className="chatbot-toggle-btn"
+          onClick={() => setIsChatbotVisible(!isChatbotVisible)}
+        >
+          {isChatbotVisible ? 'Hide Chatbot' : 'Show Chatbot'}
+        </button>
+        <ChatBot 
+          isVisible={isChatbotVisible} 
+          onToggle={() => setIsChatbotVisible(!isChatbotVisible)} 
+        />
+      </div>
     </>
   );
 }
