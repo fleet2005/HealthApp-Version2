@@ -32,7 +32,7 @@ const ChatBot = ({ isVisible, onToggle }) => {
             // Make API request to backend
             const response = await axios({
                 method: 'post',
-                url: 'http://127.0.0.1:8000/chatbot/',
+                url: 'https://healthapp-chatbot-3.onrender.com/chatbot/',
                 data: {
                     lang: "English",
                     detail: inputMessage
