@@ -17,8 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from .flow import mira_flow_endpoint
+from .flow import health_check
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('chatbot/', mira_flow_endpoint, name='mira_flow_endpoint'),
+    path("", health_check),
 ]

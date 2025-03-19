@@ -7,3 +7,4 @@ scikit-learn
 django-cors-headers
 rapidfuzz
 mira_sdk
+python-dotenv

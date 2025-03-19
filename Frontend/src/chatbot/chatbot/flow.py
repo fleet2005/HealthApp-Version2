@@ -39,3 +39,7 @@ def mira_flow_endpoint(request):
             return JsonResponse({"error": str(e)}, status=500)
     else:
         return JsonResponse({"error": "Invalid request method"}, status=400)
+
+
+def health_check(request):
+    return JsonResponse({"status": "Server is running"}, status=200)
