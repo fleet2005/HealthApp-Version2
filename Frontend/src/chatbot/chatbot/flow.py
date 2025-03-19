@@ -19,12 +19,16 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 flow_yaml_path = os.path.join(current_dir, "flow.yaml")
 flow = Flow(source=flow_yaml_path)
 
-@csrf_exempt  # Disable CSRF for simplicity (ensure security in production)
+
 def mira_flow_endpoint(request):
-    if request.method == "POST":
+    """Handles both GET and POST requests for the Mira Flow API."""
+    if request.method in ["POST", "GET"]:
         try:
-            data = json.loads(request.body)
-            
+            if request.method == "POST":
+                data = json.loads(request.body)
+            else:  # GET request: Fetch parameters from the query string
+                data = request.GET.dict()  # Converts QueryDict to a normal dictionary
+
             # Extract parameters from request
             input_dict = {
                 "lang": data.get("lang", "English"),
