@@ -25,7 +25,7 @@ function Nutrient() {
             console.log("Fetching prediction for:", foodName); // Debug log
             
             // Use the proxied URL
-            const response = await axios.post('http://127.0.0.1:8000/predict/', {
+            const response = await axios.post('https://healthapp-version2-10.onrender.com/predict/', {
                 food_name: foodName
             }, {
                 headers: {
