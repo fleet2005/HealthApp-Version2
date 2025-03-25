@@ -4,13 +4,14 @@ import axios from "axios";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import "./css/homePage.css";
 import NewUser from "./components/NewUser.jsx";
-import ChatBot from "./chatbot/chatbot/ChatBot.jsx"; // Import ChatBot component
+import ChatBot from "./chatbot/chatbot/ChatBot.jsx"; 
 
 const HomePage = () => {
   const navigate = useNavigate();  
   const [chartData, setChartData] = useState([]);
   const [isNewUser, setIsNewUser] = useState(false);
-  const [isChatbotVisible, setIsChatbotVisible] = useState(false); // New state for ChatBot visibility
+  const [isChatbotVisible, setIsChatbotVisible] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,12 +22,15 @@ const HomePage = () => {
           navigate("/");
           return;
         }
-        const response = await axios.get(`https://health-app-version2-backend.vercel.app/getLast7DaysData?email=${localStorage.getItem("user")}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json"
+        const response = await axios.get(
+          `https://health-app-version2-backend.vercel.app/getLast7DaysData?email=${localStorage.getItem("user")}`, 
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json"
+            }
           }
-        });
+        );
 
         const formattedData = response.data.map(item => ({
           date: new Date(item.date).toLocaleDateString(),
@@ -46,6 +50,13 @@ const HomePage = () => {
     fetchData();
   }, [navigate]);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % 3);
+    }, 3000); // Each slide stays for 3 seconds (with a 1-second fade transition defined in CSS)
+    return () => clearInterval(interval);
+  }, []);
+
   const handleLogout = () => {
     localStorage.removeItem("token");  
     navigate("/");  
@@ -59,17 +70,33 @@ const HomePage = () => {
             <img src="/assets/favicon.png" alt="Logo" />
             <span style={{ marginRight: '1vw' }}> HealthApp </span>
             <ul className="Items">
-              <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/homepage"); }}>Overview</a></li>
-              <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/exercise"); }}>Exercise Monitoring</a></li>
-              <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/bmi"); }}>BMI Calculator</a></li>
-              <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/nutrient"); }}> Nutrient Tracking</a></li>
+              <li>
+                <a href="#" onClick={(e) => { e.preventDefault(); navigate("/homepage"); }}>
+                  Overview
+                </a>
+              </li>
+              <li>
+                <a href="#" onClick={(e) => { e.preventDefault(); navigate("/exercise"); }}>
+                  Exercise Monitoring
+                </a>
+              </li>
+              <li>
+                <a href="#" onClick={(e) => { e.preventDefault(); navigate("/bmi"); }}>
+                  BMI Calculator
+                </a>
+              </li>
+              <li>
+                <a href="#" onClick={(e) => { e.preventDefault(); navigate("/nutrient"); }}>
+                  Nutrient Tracking
+                </a>
+              </li>
             </ul>
             <span style={{ marginLeft: "3vw", fontSize: "1.5vw" }}>
               <a href="/" onClick={handleLogout}>Logout</a>  
             </span>
           </nav>
         </div>
-        <NewUser/>
+        <NewUser />
       </div>
     );
   }
@@ -81,15 +108,44 @@ const HomePage = () => {
           <img src="/assets/favicon.png" alt="Logo" />
           <span style={{ marginRight: '1vw' }}> HealthApp </span>
           <ul className="Items">
-            <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/homepage"); }}>Overview</a></li>
-            <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/exercise"); }}>Exercise Monitoring</a></li>
-            <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/bmi"); }}>BMI Calculator</a></li>
-            <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/nutrient"); }}> Nutrient Tracking</a></li>
+            <li>
+              <a href="#" onClick={(e) => { e.preventDefault(); navigate("/homepage"); }}>
+                Overview
+              </a>
+            </li>
+            <li>
+              <a href="#" onClick={(e) => { e.preventDefault(); navigate("/exercise"); }}>
+                Exercise Monitoring
+              </a>
+            </li>
+            <li>
+              <a href="#" onClick={(e) => { e.preventDefault(); navigate("/bmi"); }}>
+                BMI Calculator
+              </a>
+            </li>
+            <li>
+              <a href="#" onClick={(e) => { e.preventDefault(); navigate("/nutrient"); }}>
+                Nutrient Tracking
+              </a>
+            </li>
           </ul>
           <span style={{ marginLeft: "3vw", fontSize: "1.5vw" }}>
             <a href="/" onClick={handleLogout}>Logout</a>  
           </span>
         </nav>
+      </div>
+
+      {/* Image Slider with Fade Transition */}
+      <div className="slider-container">
+        <div className={`slide ${currentSlide === 0 ? "active" : ""}`}>
+          Slide 1
+        </div>
+        <div className={`slide ${currentSlide === 1 ? "active" : ""}`}>
+          Slide 2
+        </div>
+        <div className={`slide ${currentSlide === 2 ? "active" : ""}`}>
+          Slide 3
+        </div>
       </div>
 
       {/* Chart Section */}
