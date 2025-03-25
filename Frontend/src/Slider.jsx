@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import "./css/Slider.css";
 
 const slides = [
-  { text: "Hello, this is Vishal", color: "linear-gradient(to right, #ff7eb3, #ff758c)" },
-  { text: "Slide 2", color: "linear-gradient(to right, #67B26F, #4ca2cd)" },
-  { text: "Slide 3", color: "linear-gradient(to right, #FF512F, #DD2476)" },
+  { text: "Track Your Nutrients", image: "/public/assets/Food.jpg" },
+  { text: "Monitor Your BMI", image: "/public/assets/bmi.jpg" },
+  { text: "Stay Active with Exercise Tracking", image: "/public/assets/exercise.jpg" },
 ];
 
 const Slider = () => {
@@ -20,13 +20,18 @@ const Slider = () => {
 
   return (
     <div className="slider-container">
-      <div 
-        className="slide fade"
-        style={{ background: slides[currentSlide].color }}
-      >
-        {slides[currentSlide].text}
-        <div className="progress-bar"></div> 
-      </div>
+      {slides.map((slide, index) => (
+        <div
+          key={index}
+          className={`slide ${index === currentSlide ? "active" : ""}`}
+          style={{ backgroundImage: `url(${slide.image})` }}
+        >
+          <div className="slide-overlay">
+            <h2>{slide.text}</h2>
+          </div>
+          <div className="progress-bar"></div>
+        </div>
+      ))}
     </div>
   );
 };
