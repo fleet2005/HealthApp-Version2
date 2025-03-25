@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import "./css/slider.css";
 
 const slides = [
-  { text: "Track Your Nutrients", image: "/public/assets/Food.jpg" },
-  { text: "Monitor Your BMI", image: "/public/assets/bmi.jpg" },
-  { text: "Stay Active with Exercise Tracking", image: "/public/assets/exercise.jpg" },
+  { text: "Track Your Nutrients", image: "/assets/Food.jpg" },
+  { text: "Monitor Your BMI", image: "/assets/BMI.jpg" },
+  { text: "Stay Active with Exercise Tracking", image: "/assets/Exercise.jpg" },
 ];
 
 const Slider = () => {
