@@ -1,10 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 body {
-    background: linear-gradient(to left bottom, rgb(0, 102, 238), rgb(120, 126, 249));
+    background: 
+        linear-gradient(to left, rgb(0, 102, 238), rgb(133, 137, 216)), 
+        linear-gradient(to right, rgb(255, 0, 150), rgb(129, 4, 108));
+    background-blend-mode: multiply;
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', 'poppins', sans-serif;
+    background-repeat: repeat-y;
+    color: black; 
+
 }
 
 .header {
