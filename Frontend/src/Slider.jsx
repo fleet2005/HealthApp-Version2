@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./css/Slider.css";
+import "./css/slider.css";
 
 const slides = [
   { text: "Track Your Nutrients", image: "/public/assets/Food.jpg" },
