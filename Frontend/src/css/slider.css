@@ -1,0 +1,55 @@
+/* Slider Container */
+.slider-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Slide */
+.slide {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  position: relative;
+}
+
+/* Progress Bar */
+.progress-bar {
+  position: absolute;
+  bottom: 10px;
+  left: 25px;
+  width: 80%;
+  height: 5px;
+  border-radius: 100vw;
+  background: rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+}
+
+.progress-bar::before {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: rgb(13, 163, 68);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: progressFill 3s linear infinite;
+}
+
+@keyframes progressFill {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}

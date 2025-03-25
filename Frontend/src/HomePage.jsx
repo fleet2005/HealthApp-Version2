@@ -5,6 +5,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import "./css/homePage.css";
 import NewUser from "./components/NewUser.jsx";
 import ChatBot from "./chatbot/chatbot/ChatBot.jsx"; 
+import Slider from "./Slider.jsx";
 
 const HomePage = () => {
   const navigate = useNavigate();  
@@ -134,19 +135,8 @@ const HomePage = () => {
           </span>
         </nav>
       </div>
-
-      {/* Image Slider with Fade Transition */}
-      <div className="slider-container">
-        <div className={`slide ${currentSlide === 0 ? "active" : ""}`}>
-          Slide 1
-        </div>
-        <div className={`slide ${currentSlide === 1 ? "active" : ""}`}>
-          Slide 2
-        </div>
-        <div className={`slide ${currentSlide === 2 ? "active" : ""}`}>
-          Slide 3
-        </div>
-      </div>
+      
+      <Slider/>
 
       {/* Chart Section */}
       <div style={{ width: "80%", margin: "20px auto" }}>
