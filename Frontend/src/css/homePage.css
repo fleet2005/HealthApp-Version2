@@ -10,6 +10,7 @@ body {
   font-family: 'Montserrat', 'poppins', sans-serif;
   background-repeat: repeat-y;
   color: black;
+  cursor: url('../../assets/cursor.cur'), auto; 
 }
 
 .header {

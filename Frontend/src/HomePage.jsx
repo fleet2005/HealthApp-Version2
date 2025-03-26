@@ -6,6 +6,7 @@ import "./css/homePage.css";
 import NewUser from "./components/NewUser.jsx";
 import ChatBot from "./chatbot/chatbot/ChatBot.jsx"; 
 import Slider from "./Slider.jsx";
+import FlexContainer from "./FlexContainer.jsx";
 
 const HomePage = () => {
   const navigate = useNavigate();  
@@ -137,7 +138,9 @@ const HomePage = () => {
       </div>
       
       <Slider/>
-
+      <br/><br/><br/>
+      <FlexContainer/>
+      
       {/* Chart Section */}
       <div style={{ width: "80%", margin: "20px auto" }}>
         <h2>Calories Consumed vs. Burned (Last 7 Days)</h2>

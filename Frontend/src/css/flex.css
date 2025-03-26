@@ -1,0 +1,24 @@
+.flex-container {
+    margin-left: 30vw;
+    width: 50vw; /* Increase width to fit six items */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3vw; /* Space between boxes */
+    padding: 2vw;
+}
+
+.item {
+    color: white;
+    background-color: black;
+    font-size: medium;
+    width: 12vw; /* Box width */
+    height: 12vw; /* Box height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #01cb6d; /* Neon green outline */
+    box-shadow: 0 0 10px #39ff14; /* Glow effect */
+}
