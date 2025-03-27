@@ -7,6 +7,7 @@ import NewUser from "./components/NewUser.jsx";
 import ChatBot from "./chatbot/chatbot/ChatBot.jsx"; 
 import Slider from "./Slider.jsx";
 import FlexContainer from "./FlexContainer.jsx";
+import Tips from "./Tips.jsx"
 
 const HomePage = () => {
   const navigate = useNavigate();  
@@ -123,6 +124,8 @@ const HomePage = () => {
           </>
         )}
       </div>
+
+      <Tips/>
 
       {/* Chatbot Section */}
       <div style={{ textAlign: "center", marginTop: "20px" }}>
