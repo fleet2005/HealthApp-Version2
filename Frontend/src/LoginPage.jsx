@@ -8,6 +8,7 @@ const LoginPage = () => {
     const [Email, SetEmail] = useState("");
     const [Password, SetPassword] = useState("");
     const [error, setError] = useState("");
+    const [demoMessageVisible, setDemoMessageVisible] = useState(false);
     const navigate = useNavigate();
 
     const handleClick = () => {
@@ -73,6 +74,7 @@ const LoginPage = () => {
         }
         SetEmail("user@example.com");
         SetPassword("ungamma");
+        setDemoMessageVisible(true);
     };
 
     return (
@@ -160,6 +162,11 @@ const LoginPage = () => {
                             >
                                 Use Demo Account
                             </button>
+                            {demoMessageVisible && (
+                                <p style={{ marginTop: "0.5vw", fontSize: "1vw", color: "#333" }}>
+                                    Please Click Login
+                                </p>
+                            )}
                         </>
                     ) : (
                         <>
@@ -224,6 +231,11 @@ const LoginPage = () => {
                             >
                                 Use Demo Account
                             </button>
+                            {demoMessageVisible && (
+                                <p style={{ marginTop: "0.5vw", fontSize: "1vw", color: "#333" }}>
+                                    Please Click Login
+                                </p>
+                            )}
                         </>
                     )}
                 </form>
