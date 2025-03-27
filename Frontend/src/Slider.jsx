@@ -2,9 +2,21 @@ import { useEffect, useState } from "react";
 import "./css/slider.css";
 
 const slides = [
-  { text: "Track Your Nutrients", image: "/assets/Food.jpg" },
-  { text: "Monitor Your BMI", image: "/assets/BMI.jpg" },
-  { text: "Stay Active with Exercise Tracking", image: "/assets/Exercise.jpg" },
+  { 
+    title: "Track Food Nutrients", 
+    description: "Log your daily meals easily with predictive help", 
+    image: "/assets/Food.jpg" 
+  },
+  { 
+    title: "Monitor Your BMI & Health Trends", 
+    description: "Stay on top of your weight goals with real-time BMI analysis", 
+    image: "/assets/BMI.jpg" 
+  },
+  { 
+    title: "Stay Active with Exercise Tracking", 
+    description: "Set fitness goals, track workouts, and improve your lifestyle", 
+    image: "/assets/Exercise.jpg" 
+  },
 ];
 
 const Slider = () => {
@@ -27,7 +39,15 @@ const Slider = () => {
           style={{ backgroundImage: `url(${slide.image})` }}
         >
           <div className="slide-overlay">
-            <h2>{slide.text}</h2>
+            <h2>{slide.title}</h2>
+            <div className="description-container">
+              <img
+                className="desc-image"
+                src="https://via.placeholder.com/150"
+                alt="description"
+              />
+              <p>{slide.description}</p>
+            </div>
           </div>
           <div className="progress-bar"></div>
         </div>

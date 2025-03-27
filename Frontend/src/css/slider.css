@@ -1,14 +1,16 @@
 /* Slider Container */
 .slider-container {
   position: relative;
-  width: 300px;
-  height: 300px;
-  margin: 20px auto;
+  width: 32vw;
+  height: 32vw;
+  margin-top: 13vw;
+  margin-left: 10vw;
   overflow: hidden;
   border-radius: 15px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   outline-style: solid;
-  outline-color: white;
+  outline-color: rgb(116, 12, 244);
+  margin-bottom: 5vw;
 }
 
 /* Slide */
@@ -16,13 +18,15 @@
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   font-size: 24px;
   font-weight: bold;
   color: white;
   position: absolute;
-  visibility: hidden;  /* Instead of opacity 0 */
+  visibility: hidden;
   transition: visibility 0s, opacity 1s ease-in-out;
   opacity: 0;
   background-size: cover;
@@ -41,21 +45,60 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4); /* 40% darker */
+  background: rgba(0, 0, 0, 0.4);
   z-index: 0;
 }
 
-/* Slide Text */
-.slide h2 {
+/* Slide Overlay (for title and subcontainer) */
+.slide-overlay {
   position: relative;
   z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1vw;
+}
+
+/* Slide Title */
+.slide h2 {
+  font-size: 2vw;
+  margin-top: -14vw;
+}
+
+/* Description Container (White Subcontainer) */
+.description-container {
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+  padding: 1vw;
+  margin-top: 1vw;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Description Image */
+.desc-image {
+  width: 80%;
+  max-width: 150px;
+  margin-bottom: 0.5vw;
+}
+
+/* Slide Description Text */
+.description-container p {
+  font-size: 1.2vw;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: center;
+  margin: 0;
 }
 
 /* Progress Bar */
 .progress-bar {
   position: absolute;
   bottom: 10px;
-  left: 25px;
+  left: 10%;
   width: 80%;
   height: 5px;
   border-radius: 100vw;
