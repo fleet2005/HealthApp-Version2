@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const LoginPage = () => {
-    const [Visible, SetVisible] = useState(false);
+    const [Visible, SetVisible] = useState(true); // default to Sign In
     const [Email, SetEmail] = useState("");
     const [Password, SetPassword] = useState("");
     const [error, setError] = useState("");
@@ -15,15 +15,14 @@ const LoginPage = () => {
     };
 
     const handleKeyPress = (e) => {
-        if(e.key === 'Enter')
-        {
+        if (e.key === 'Enter') {
             if (Visible) {
-                handleLogin(e); // Trigger login if it's the login form
+                handleLogin(e);
             } else {
-                handleRegister(e); // Trigger register if it's the signup form
+                handleRegister(e);
             }
         }
-    }
+    };
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -37,7 +36,6 @@ const LoginPage = () => {
                 alert("Login Successful!");
                 localStorage.setItem("user", Email);
                 localStorage.setItem("token", response.data.accessToken);
-                console.log(localStorage.getItem("token"));
                 navigate("/homepage");
             } else {
                 setError("Invalid credentials");
@@ -68,34 +66,43 @@ const LoginPage = () => {
         }
     };
 
+    const fillWithDemoCredentials = () => {
+        // Force switch to Sign In mode if not already there
+        if (!Visible) {
+            SetVisible(true);
+        }
+        SetEmail("user@example.com");
+        SetPassword("ungamma");
+    };
+
     return (
         <div className="login-page">
             <div className="login-box">
                 <form>
-                <button
-                    className="switch-btn"
-                    type="button"
-                    onClick={handleClick}
-                    style={{
-                        backgroundColor: "#6C757D",
-                        color: "white",
-                        fontSize: "1.2vw",
-                        border: "none",
-                        borderRadius: "1vw",
-                        marginTop : "-2vw",
-                        width : "15vw",
-                        cursor: "pointer",
-                        transition: "background-color 0.3s",
-                    }}
-                    onMouseOver={(e) => (e.target.style.backgroundColor = "#0056b3")}
-                    onMouseOut={(e) => (e.target.style.backgroundColor = "#007BFF")}
-                >
-                    {Visible ? "Switch to Sign Up" : "Switch to Sign In"}
-                </button>
+                    <button
+                        className="switch-btn"
+                        type="button"
+                        onClick={handleClick}
+                        style={{
+                            backgroundColor: "#6C757D",
+                            color: "white",
+                            fontSize: "1.2vw",
+                            border: "none",
+                            borderRadius: "1vw",
+                            marginTop: "-2vw",
+                            width: "15vw",
+                            cursor: "pointer",
+                            transition: "background-color 0.3s",
+                        }}
+                        onMouseOver={(e) => (e.target.style.backgroundColor = "#0056b3")}
+                        onMouseOut={(e) => (e.target.style.backgroundColor = "#007BFF")}
+                    >
+                        {Visible ? "Switch to Sign Up" : "Switch to Sign In"}
+                    </button>
 
                     {Visible ? (
                         <>
-                            <h2>Sign In</h2> <br/>
+                            <h2>Sign In</h2> <br />
                             <label>Email Id:</label>
                             <input
                                 type="email"
@@ -113,16 +120,16 @@ const LoginPage = () => {
                                 onKeyDown={handleKeyPress}
                                 required
                             />
-                            <br/>
+                            <br />
                             <button
                                 type="button"
                                 onClick={handleLogin}
                                 style={{
                                     backgroundColor: "#28A745",
                                     color: "white",
-                                    marginBottom : "-1vw",
+                                    marginBottom: "-1vw",
                                     fontSize: "1.2vw",
-                                    width : "8vw",
+                                    width: "8vw",
                                     border: "none",
                                     borderRadius: "1vw",
                                     cursor: "pointer",
@@ -133,13 +140,31 @@ const LoginPage = () => {
                             >
                                 Login
                             </button>
-
-
+                            <br />
+                            <button
+                                type="button"
+                                onClick={fillWithDemoCredentials}
+                                style={{
+                                    backgroundColor: "#FFC107",
+                                    color: "black",
+                                    fontSize: "1.2vw",
+                                    width: "12vw",
+                                    border: "none",
+                                    borderRadius: "1vw",
+                                    cursor: "pointer",
+                                    marginTop: "1vw",
+                                    transition: "background-color 0.3s",
+                                }}
+                                onMouseOver={(e) => (e.target.style.backgroundColor = "#e0a800")}
+                                onMouseOut={(e) => (e.target.style.backgroundColor = "#FFC107")}
+                            >
+                                Use Demo Account
+                            </button>
                         </>
                     ) : (
                         <>
                             <h2>Sign Up</h2>
-                            <br/>
+                            <br />
                             <label>Email Id:</label>
                             <input
                                 type="email"
@@ -157,7 +182,7 @@ const LoginPage = () => {
                                 onKeyDown={handleKeyPress}
                                 required
                             />
-                            <br/>
+                            <br />
                             <button
                                 type="button"
                                 onClick={handleRegister}
@@ -165,7 +190,7 @@ const LoginPage = () => {
                                     backgroundColor: "#28A745",
                                     color: "white",
                                     marginBottom: "-1vw",
-                                    height : "3.5vw",
+                                    height: "3.5vw",
                                     fontSize: "1.2vw",
                                     width: "8.5vw",
                                     border: "none",
@@ -178,7 +203,27 @@ const LoginPage = () => {
                             >
                                 Register
                             </button>
-
+                            <br />
+                            {/* The demo button here only switches to sign in without autofilling in the register section */}
+                            <button
+                                type="button"
+                                onClick={fillWithDemoCredentials}
+                                style={{
+                                    backgroundColor: "#FFC107",
+                                    color: "black",
+                                    fontSize: "1.2vw",
+                                    width: "12vw",
+                                    border: "none",
+                                    borderRadius: "1vw",
+                                    cursor: "pointer",
+                                    marginTop: "1vw",
+                                    transition: "background-color 0.3s",
+                                }}
+                                onMouseOver={(e) => (e.target.style.backgroundColor = "#e0a800")}
+                                onMouseOut={(e) => (e.target.style.backgroundColor = "#FFC107")}
+                            >
+                                Use Demo Account
+                            </button>
                         </>
                     )}
                 </form>
@@ -188,12 +233,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-
-{/* e.target.value is used to get the current value of an input field in React.
-
-                🔹 Explanation
-                e refers to the event object.
-                e.target refers to the element that triggered the event (like an <input> field).
-                e.target.value gets the current value entered in that input field. */}
-
-// Input is a self closing tag <input/>
