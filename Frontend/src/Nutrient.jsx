@@ -20,6 +20,7 @@ import debounce from 'lodash/debounce';
 import ChatBot from "./chatbot/chatbot/ChatBot.jsx"; // Import ChatBot component
 
 function Nutrient() {
+  // State declarations
   const [url, setUrl] = useState(null);
   const [inputFields, setInputFields] = useState([{ name: '', weight: '' }]);
   const [calorieData, setCalorieData] = useState([]);
@@ -33,7 +34,7 @@ function Nutrient() {
   console.log("[INIT] Component rendered");
   console.log("[INIT] User Email:", localStorage.getItem('user'), "Auth Token:", localStorage.getItem('token'));
 
-  // Fetch prediction from backend for a given food name.
+  // Function to fetch prediction from backend for a given food name.
   const fetchPrediction = async (foodName) => {
     if (!foodName) {
       console.log("[PREDICTION] No food name provided.");
@@ -68,10 +69,11 @@ function Nutrient() {
     []
   );
 
-  // Submit form data: fetch nutrition data for each food in inputFields only.
+  // Logger function - submit form data and fetch nutrition data.
   async function logger(event) {
     event.preventDefault();
     console.log("[SUBMIT] Form submission triggered.");
+
     if (inputFields.length === 0) {
       console.log("[SUBMIT] No input fields available. Aborting submission.");
       return;
@@ -79,56 +81,67 @@ function Nutrient() {
 
     const email = localStorage.getItem("user");
     const token = localStorage.getItem("token");
+    // Retrieve exerciseData from localStorage; ensure it's an object with total_calories_burned.
     const exerciseData = JSON.parse(localStorage.getItem("exerciseData")) || { total_calories_burned: 0 };
 
     let totalCalories = 0;
     let totalProtein = 0;
     let totalFat = 0;
 
-    // Create a food list from input fields only.
-    const foodList = inputFields.map(f => f.name);
-    console.log("[SUBMIT] Food list for nutrition data:", foodList);
+    // Process each food item from the input fields.
+    for (const field of inputFields) {
+      const food = field.name.trim();
+      // Parse the weight as a number. Default to 0 if invalid.
+      const weight = parseFloat(field.weight) || 0;
 
-    try {
-      // Loop over each food and fetch its nutrition data.
-      for (const food of foodList) {
-        console.log("[SUBMIT] Fetching nutrition data for:", food);
+      // If either food name is missing or weight is zero, skip the entry.
+      if (!food || weight <= 0) {
+        console.warn(`[SUBMIT] Skipping food "${food}" with weight "${field.weight}"`);
+        continue;
+      }
+
+      console.log(`[SUBMIT] Fetching nutrition data for: ${food} (Weight: ${weight} g)`);
+      try {
         const response = await axios.get(`https://health-app-version2-backend.vercel.app/nutrient?foodName=${encodeURIComponent(food)}`);
-        // Assume response.data returns an array, take the first object.
+        // Assume response.data returns an array and take the first object.
         const nutritionData = response.data;
         if (Array.isArray(nutritionData) && nutritionData.length > 0) {
           const data = nutritionData[0];
-          totalCalories += data.energy_kcal || 0;
-          totalProtein += data.protein_g || 0;
-          totalFat += data.fat_g || 0;
+          // Multiply by (weight / 100) since nutrition data is per 100g.
+          totalCalories += (data.energy_kcal || 0) * (weight / 100);
+          totalProtein += (data.protein_g || 0) * (weight / 100);
+          totalFat += (data.fat_g || 0) * (weight / 100);
           console.log(`[SUBMIT] Data for ${food}:`, data);
         } else {
           console.warn(`[SUBMIT] No nutrition data received for ${food}.`);
         }
+      } catch (error) {
+        console.error(`[SUBMIT] Error fetching nutrition data for ${food}:`, error);
       }
+    }
 
-      // Construct new entry for the backend.
-      const newEntry = {
-        date: new Date().toISOString(),
-        nutrition: {
-          consumed_energy_kcal: totalCalories,
-          consumed_protein_g: totalProtein,
-          consumed_fat_g: totalFat
-        },
-        exercise: {
-          total_calories_burned: exerciseData.total_calories_burned || 0 
-        }
-      };
-      console.log("[SUBMIT] New entry to be submitted:", newEntry);
+    // Construct the new entry including exercise data.
+    const newEntry = {
+      date: new Date().toISOString(),
+      nutrition: {
+        consumed_energy_kcal: totalCalories,
+        consumed_protein_g: totalProtein,
+        consumed_fat_g: totalFat
+      },
+      exercise: {
+        total_calories_burned: exerciseData.total_calories_burned || 0
+      }
+    };
+    console.log("[SUBMIT] New entry to be submitted:", newEntry);
 
-      // Submit the data via a JWT-protected route.
+    try {
       const submissionResponse = await axios.post(
         "https://health-app-version2-backend.vercel.app/addOrUpdateUserData",
         { email, newEntry },
         {
           headers: {
             "Authorization": `Bearer ${token}`,
-            "Content-Type": "application/json",
+            "Content-Type": "application/json"
           },
         }
       );
@@ -139,9 +152,9 @@ function Nutrient() {
       const repl = document.getElementById('replace');
       if (repl) {
         repl.innerHTML = `
-          <p><strong>Total Calories:</strong> ${totalCalories} kcal</p>
-          <p><strong>Total Protein:</strong> ${totalProtein} g</p>
-          <p><strong>Total Fat:</strong> ${totalFat} g</p>
+          <p><strong>Total Calories:</strong> ${totalCalories.toFixed(2)} kcal</p>
+          <p><strong>Total Protein:</strong> ${totalProtein.toFixed(2)} g</p>
+          <p><strong>Total Fat:</strong> ${totalFat.toFixed(2)} g</p>
           <p><strong>Total Exercise Calories:</strong> ${exerciseData.total_calories_burned} kcal</p>
         `;
       }
@@ -184,10 +197,10 @@ function Nutrient() {
       console.log("[PREDICTION] Clicked, but prediction is not valid:", prediction);
       return;
     }
-    // Add prediction to inputFields so it will be submitted.
-    setInputFields([...inputFields, { name: prediction, weight: '1' }]);
+    // Add the predicted food to the input fields with a default weight (e.g., 1g or 100g as needed)
+    setInputFields([...inputFields, { name: prediction, weight: '100' }]);
     console.log("[PREDICTION] Added prediction to input fields:", prediction);
-    // Optionally, fetch a new prediction after accepting the current one.
+    // Optionally fetch a new prediction after accepting the current one.
     fetchPrediction(prediction);
   };
 
@@ -207,7 +220,7 @@ function Nutrient() {
     }
   }, []);
 
-  // If URL is set, fetch data from it.
+  // Optional: If URL is set, fetch data from it.
   useEffect(() => {
     async function fetchData() {
       if (!url) return;
@@ -243,12 +256,15 @@ function Nutrient() {
       console.log("[DATA] Fetching last 7 days data for user:", userEmail);
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get(`https://health-app-version2-backend.vercel.app/getLast7DaysData?email=${localStorage.getItem("user")}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json"
+        const response = await axios.get(
+          `https://health-app-version2-backend.vercel.app/getLast7DaysData?email=${localStorage.getItem("user")}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json"
+            }
           }
-        });
+        );
         console.log("[DATA] Fetched Data:", response.data);
         if (!response.data || response.data.length === 0) {
           console.log("[DATA] No user data found. Marking as new user.");
@@ -297,7 +313,7 @@ function Nutrient() {
               <input
                 type="text"
                 name="weight"
-                placeholder="Quantity (not used now)"
+                placeholder="Quantity in gms"
                 value={inputField.weight}
                 onChange={(event) => handleInputChange(index, event)}
               />
@@ -332,7 +348,6 @@ function Nutrient() {
         </form>
         <div id="replace"></div>
       </div>
-
       {isNewUser ? (
         <NewUser />
       ) : (
@@ -350,7 +365,6 @@ function Nutrient() {
               </BarChart>
             </ResponsiveContainer>
           </div>
-
           <h2>Protein vs Fat Distribution</h2>
           <div className="chart-container">
             <ResponsiveContainer width="50%" height={300}>
@@ -367,7 +381,6 @@ function Nutrient() {
         </>
       )}
       <br />
-
       <div style={{ textAlign: "center", marginTop: "20px" }}>
         <button
           className="chatbot-toggle-btn"
