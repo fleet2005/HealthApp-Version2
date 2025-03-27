@@ -55,7 +55,7 @@ const HomePage = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % 3);
-    }, 3000); // Each slide stays for 3 seconds (with a 1-second fade transition defined in CSS)
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
@@ -63,45 +63,6 @@ const HomePage = () => {
     localStorage.removeItem("token");  
     navigate("/");  
   };
-
-  if (isNewUser) {
-    return (
-      <div>
-        <div className="header">
-          <nav className="navbar">
-            <img src="/assets/favicon.png" alt="Logo" />
-            <span style={{ marginRight: '1vw' }}> HealthApp </span>
-            <ul className="Items">
-              <li>
-                <a href="#" onClick={(e) => { e.preventDefault(); navigate("/homepage"); }}>
-                  Overview
-                </a>
-              </li>
-              <li>
-                <a href="#" onClick={(e) => { e.preventDefault(); navigate("/exercise"); }}>
-                  Exercise Monitoring
-                </a>
-              </li>
-              <li>
-                <a href="#" onClick={(e) => { e.preventDefault(); navigate("/bmi"); }}>
-                  BMI Calculator
-                </a>
-              </li>
-              <li>
-                <a href="#" onClick={(e) => { e.preventDefault(); navigate("/nutrient"); }}>
-                  Nutrient Tracking
-                </a>
-              </li>
-            </ul>
-            <span style={{ marginLeft: "3vw", fontSize: "1.5vw" }}>
-              <a href="/" onClick={handleLogout}>Logout</a>  
-            </span>
-          </nav>
-        </div>
-        <NewUser />
-      </div>
-    );
-  }
 
   return (
     <div>
@@ -141,20 +102,26 @@ const HomePage = () => {
       <br/><br/><br/>
       <FlexContainer/>
       
-      {/* Chart Section */}
+      {/* Conditional Display: NewUser or Chart Section */}
       <div style={{ width: "80%", margin: "20px auto" }}>
-        <h2>Calories Consumed vs. Burned (Last 7 Days)</h2>
-        <ResponsiveContainer width="100%" height={300}>
-          <LineChart data={chartData}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="date" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line type="monotone" dataKey="consumedCalories" stroke="#8884d8" name="Calories Consumed" />
-            <Line type="monotone" dataKey="burnedCalories" stroke="#82ca9d" name="Calories Burned" />
-          </LineChart>
-        </ResponsiveContainer>
+        {isNewUser ? (
+          <NewUser />
+        ) : (
+          <>
+            <h2>Calories Consumed vs. Burned (Last 7 Days)</h2>
+            <ResponsiveContainer width="100%" height={300}>
+              <LineChart data={chartData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="date" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Line type="monotone" dataKey="consumedCalories" stroke="#8884d8" name="Calories Consumed" />
+                <Line type="monotone" dataKey="burnedCalories" stroke="#82ca9d" name="Calories Burned" />
+              </LineChart>
+            </ResponsiveContainer>
+          </>
+        )}
       </div>
 
       {/* Chatbot Section */}

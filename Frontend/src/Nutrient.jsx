@@ -176,15 +176,6 @@ function Nutrient() {
         fetchContent();
     }, [userEmail, authToken]);
 
-    if (isNewUser) {
-        return (
-            <div>
-                <Navbar />  
-                <NewUser />
-            </div>
-        );
-    }
-
     return (
         <div>
             <Navbar /> <br/><br/><br/><br/>
@@ -232,35 +223,42 @@ function Nutrient() {
                 <div id="replace"></div>
             </div>
             
-            {/* Bar Chart for Calories */}
-            <h2>Calories Consumed: Last 7 Entries</h2>
-            <div className="chart-container">
-                <ResponsiveContainer width="80%" height={300}>
-                    <BarChart data={calorieData}>
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="name" />
-                        <YAxis />
-                        <Tooltip />
-                        <Legend />
-                        <Bar dataKey="Calories" fill="#dc3545" />
-                    </BarChart>
-                </ResponsiveContainer>
-            </div>
-            
-            {/* Pie Chart for Macros */}
-            <h2>Protein vs Fat Distribution</h2>
-            <div className="chart-container">
-                <ResponsiveContainer width="50%" height={300}>
-                    <PieChart>
-                        <Pie data={macroData} dataKey="value" nameKey="name" outerRadius={100} label>
-                            <Cell key="Protein" fill="#82ca9d" />
-                            <Cell key="Fat" fill="#ff7300" />
-                        </Pie>
-                        <Tooltip />
-                        <Legend />
-                    </PieChart>
-                </ResponsiveContainer>
-            </div>
+            {/* Conditionally display charts or NewUser component */}
+            {isNewUser ? (
+                <NewUser />
+            ) : (
+                <>
+                    {/* Bar Chart for Calories */}
+                    <h2>Calories Consumed: Last 7 Entries</h2>
+                    <div className="chart-container">
+                        <ResponsiveContainer width="80%" height={300}>
+                            <BarChart data={calorieData}>
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis dataKey="name" />
+                                <YAxis />
+                                <Tooltip />
+                                <Legend />
+                                <Bar dataKey="Calories" fill="#dc3545" />
+                            </BarChart>
+                        </ResponsiveContainer>
+                    </div>
+                    
+                    {/* Pie Chart for Macros */}
+                    <h2>Protein vs Fat Distribution</h2>
+                    <div className="chart-container">
+                        <ResponsiveContainer width="50%" height={300}>
+                            <PieChart>
+                                <Pie data={macroData} dataKey="value" nameKey="name" outerRadius={100} label>
+                                    <Cell key="Protein" fill="#82ca9d" />
+                                    <Cell key="Fat" fill="#ff7300" />
+                                </Pie>
+                                <Tooltip />
+                                <Legend />
+                            </PieChart>
+                        </ResponsiveContainer>
+                    </div>
+                </>
+            )}
             <br/>
 
             {/* Chatbot Section */}

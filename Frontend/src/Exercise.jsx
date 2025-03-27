@@ -13,9 +13,9 @@ function Exercise() {
     const [duration, setDuration] = useState("");
     const [calories, setCalories] = useState("");
     const [isNewUser, setIsNewUser] = useState(false);
+    const [isChatbotVisible, setIsChatbotVisible] = useState(false);
     const userEmail = localStorage.getItem("Email");
     const authToken = localStorage.getItem("AuthToken");
-    const [isChatbotVisible, setIsChatbotVisible] = useState(false);
 
     async function logger(event) {
         event.preventDefault();
@@ -76,21 +76,12 @@ function Exercise() {
 
                 setChartData(formattedData);
             } catch (error) {
-                console.warn("User data not found. Redirecting to new user setup.");
+                console.warn("User data not found. Displaying new user setup.");
                 setIsNewUser(true);
             }
         }
         fetchContent();
     }, [userEmail, authToken]);
-
-    if (isNewUser) {
-        return (
-            <div>
-                <Navbar />
-                <NewUser />
-            </div>
-        );
-    }
 
     return (
         <>
@@ -107,19 +98,21 @@ function Exercise() {
                 <div id="replace1">{calories}</div>
             </div>
 
-            <div className="chart-container">
-                <h2>Calories Expended - Last 7 Entries</h2>
-                <ResponsiveContainer width="100%" height={300}>
-                    <BarChart data={chartData}>
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="date" />
-                        <YAxis />
-                        <Tooltip />
-                        <Legend />
-                        <Bar dataKey="burnedCalories" fill="#82ca9d" name="Calories Burned" />
-                    </BarChart>
-                </ResponsiveContainer>
-            </div>
+            {isNewUser ? <NewUser /> : (
+                <div className="chart-container">
+                    <h2>Calories Expended - Last 7 Entries</h2>
+                    <ResponsiveContainer width="100%" height={300}>
+                        <BarChart data={chartData}>
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="date" />
+                            <YAxis />
+                            <Tooltip />
+                            <Legend />
+                            <Bar dataKey="burnedCalories" fill="#82ca9d" name="Calories Burned" />
+                        </BarChart>
+                    </ResponsiveContainer>
+                </div>
+            )}
             <br/>
             <button 
                 className="chatbot-toggle-btn"

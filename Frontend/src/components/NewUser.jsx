@@ -2,7 +2,6 @@ import "../css/newUser.css";
 
 const NewUser = () => {
   return (
-    <div className="new-user-container">
       <div className="welcome-card">
         <h1>Welcome to HealthApp! 🚀</h1>
         <p>
@@ -11,11 +10,9 @@ const NewUser = () => {
           healthy lifestyle.
         </p>
         <p>
-          Since this is your first time here, let's set up your profile to get
-          personalized recommendations.
+          Since this is your first time here, start tracking food and exercises to generate user data charts.
         </p>
       </div>
-    </div>
   );
 };
 
