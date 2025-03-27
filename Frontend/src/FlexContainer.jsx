@@ -1,18 +1,35 @@
 import React from "react";
 import "./css/flex.css";
 
-const FlexContainer = () => {
+const items = [
+  { text: "Bcrypt", image: "https://via.placeholder.com/100", hoverText: "New Text" },
+  { text: "JWT", image: "https://via.placeholder.com/100", hoverText: "New Text" },
+  { text: "Markov", image: "https://via.placeholder.com/100", hoverText: "New Text" },
+  { text: "Chatbot", image: "https://via.placeholder.com/100", hoverText: "New Text" },
+  { text: "History", image: "https://via.placeholder.com/100", hoverText: "New Text" },
+  { text: "Charting", image: "https://via.placeholder.com/100", hoverText: "New Text" },
+];
 
-    return(
-        <div className = "flex-container">
-            <div className = "item item1">Item 1</div>
-            <div className = "item item2">Item 2</div>
-            <div className = "item item3">Item 3</div>
-            <div className = "item item4">Item 4</div>
-            <div className = "item item5">Item 5</div>
-            <div className = "item item6">Item 6</div>
+const FlexContainer = () => {
+  return (
+    <div className="flex-container">
+      {items.map((item, index) => (
+        <div className="item" key={index}>
+          <div className="flip-container">
+            <div className="flipper">
+              <div className="front">
+                <img src={item.image} alt={item.text} className="item-image" />
+                <span className="item-text">{item.text}</span>
+              </div>
+              <div className="back">
+                <span className="hover-text">{item.hoverText}</span>
+              </div>
+            </div>
+          </div>
         </div>
-    )
-}
+      ))}
+    </div>
+  );
+};
 
 export default FlexContainer;
