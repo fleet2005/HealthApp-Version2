@@ -40,8 +40,9 @@ function Exercise() {
                 const caloriesPerKg = data[0].Calories_Per_Kg || null;
                 if (caloriesPerKg !== null) {
                     const calculatedCalories = caloriesPerKg * weight * duration/60;
-                    localStorage.setItem(calories = calculatedCalories);
                     setCalories(`${calculatedCalories.toFixed(2)} Calories`);
+                    const exerciseData = { total_calories_burned: parseFloat(calculatedCalories.toFixed(2)) };
+                    localStorage.setItem("exerciseData", JSON.stringify(exerciseData));
                 } else {
                     setCalories("Exercise data not found, Apologies");
                 }
