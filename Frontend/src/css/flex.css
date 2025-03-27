@@ -1,24 +1,45 @@
 .flex-container {
     margin-left: 30vw;
-    width: 50vw; /* Increase width to fit six items */
+    width: 50vw;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-    gap: 3vw; /* Space between boxes */
+    gap: 3vw;
     padding: 2vw;
+}
+
+@keyframes glowing {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
 }
 
 .item {
     color: white;
     background-color: black;
     font-size: medium;
-    width: 12vw; /* Box width */
-    height: 12vw; /* Box height */
+    width: 12vw;
+    height: 12vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid #01cb6d; /* Neon green outline */
-    box-shadow: 0 0 10px #39ff14; /* Glow effect */
+    border-radius: 12px;
+    position: relative;
+}
+
+/* Green glow on bottom */
+.item::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    margin-left : 10%;
+    margin-bottom : 7%;
+    width: 70%;
+    height: 3px;
+    background: #39ff14;
+    filter: blur(1px);
+    animation: glowing 2s infinite linear;
 }
