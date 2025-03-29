@@ -10,9 +10,9 @@ import History from "/assets/History.png";
 const items = [
   { text: "Bcrypt", image: Bcrypt, hoverText: "Securely store and manage your health data." },
   { text: "JWT", image: JWT, hoverText: "Keep your login sessions safe and secure." },
-  { text: "Markov", image: Markov, hoverText: "Analyze health trends and predictions with AI." },
+  { text: "Markov", image: Markov, hoverText: "Get Next food predictions with our Markov Model." },
   { text: "Chatbot", image: Chatbot, hoverText: "Get instant health advice with our AI chatbot." },
-  { text: "History", image: History, hoverText: "Track your past workouts, meals, and progress." },
+  { text: "History", image: History, hoverText: "Track your past calories consumption and expenditure." },
   { text: "Charting", image: Charting, hoverText: "Visualize your health progress with charts." },
 ];
 
