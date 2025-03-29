@@ -39,7 +39,7 @@ function Exercise() {
             if (data && data.length > 0) {
                 const caloriesPerKg = data[0].Calories_Per_Kg || null;
                 if (caloriesPerKg !== null) {
-                    const calculatedCalories = caloriesPerKg * weight * duration/60;
+                    const calculatedCalories = caloriesPerKg * weight * (duration / 60);
                     setCalories(`${calculatedCalories.toFixed(2)} Calories`);
                     const exerciseData = { total_calories_burned: parseFloat(calculatedCalories.toFixed(2)) };
                     localStorage.setItem("exerciseData", JSON.stringify(exerciseData));
@@ -71,8 +71,8 @@ function Exercise() {
                     return;
                 }
 
-                const formattedData = response.data.map(item => ({
-                    date: new Date(item.date).toLocaleDateString(),
+                const formattedData = response.data.map((item, index) => ({
+                    entry: `Entry ${index + 1}`,
                     burnedCalories: item.exercise.total_calories_burned,
                 }));
 
@@ -106,7 +106,7 @@ function Exercise() {
                     <ResponsiveContainer width="100%" height={300}>
                         <BarChart data={chartData}>
                             <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="date" />
+                            <XAxis dataKey="entry" />
                             <YAxis />
                             <Tooltip />
                             <Legend />

@@ -272,7 +272,7 @@ function Nutrient() {
           return;
         }
         const formattedCalorieData = response.data.map((entry, index) => ({
-          name: `Day ${index + 1}`,
+          name: `Entry ${index + 1}`,
           Calories: entry.nutrition.consumed_energy_kcal
         }));
         setCalorieData(formattedCalorieData);
