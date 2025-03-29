@@ -71,7 +71,7 @@ const LoginPage = () => {
                 setError("Error while Registering");
             }
         } catch (error) {
-            setError("Error occurred");
+            setError("Error! Already Registered, Please Login");
             console.error("Registration error:", error);
         } finally {
             setLoading(false);
