@@ -113,7 +113,7 @@ const HomePage = () => {
           <NewUser />
         ) : (
           <>
-            <h2>Calories Consumed vs. Burned (Last 7 Days)</h2>
+            <h2 style={{ fontWeight: "bold", color: "white" }}>Calories <span style={{ color: "red" }}>Consumed</span> vs. <span style={{ color: "lightgreen" }}>Burned</span> (Last 7 Days)</h2>
             <ResponsiveContainer width="100%" height={300}>
               <LineChart data={chartData}>
                 <CartesianGrid strokeDasharray="3 3" />
@@ -121,8 +121,8 @@ const HomePage = () => {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Line type="monotone" dataKey="consumedCalories" stroke="#8884d8" name="Calories Consumed" />
-                <Line type="monotone" dataKey="burnedCalories" stroke="#82ca9d" name="Calories Burned" />
+                <Line type="monotone" dataKey="consumedCalories" stroke="red" name="Calories Consumed" />
+                <Line type="monotone" dataKey="burnedCalories" stroke="lightgreen" name="Calories Burned" />
               </LineChart>
             </ResponsiveContainer>
           </>

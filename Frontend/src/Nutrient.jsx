@@ -296,10 +296,10 @@ function Nutrient() {
   return (
     <div>
       <Navbar />
-      <br /><br /><br /><br />
+      <br /><br /><br /><br /><br/><br/>
       <div id="fetching">
         <form onSubmit={logger}>
-          <label> Calories Gained Through Eating </label>
+        <label style={{ fontWeight: "bold", color: "white", fontSize: "1.8vw" }}>Calories Gained Through Eating</label>
           {inputFields.map((inputField, index) => (
             <div key={index}>
               <input
@@ -352,7 +352,8 @@ function Nutrient() {
         <NewUser />
       ) : (
         <>
-          <h2>Calories Consumed: Last 7 Entries</h2>
+        <br/><br/><br/>
+          <h2 style={{ fontWeight: "bold", color: "white", fontSize: "1.8vw" }}>Calories Consumed: Last 7 Entries</h2>
           <div className="chart-container">
             <ResponsiveContainer width="80%" height={300}>
               <BarChart data={calorieData}>
@@ -365,7 +366,8 @@ function Nutrient() {
               </BarChart>
             </ResponsiveContainer>
           </div>
-          <h2>Protein vs Fat Distribution</h2>
+          <br/><br/><br/><br/>
+          <h2 style={{ fontWeight: "bold", color: "white", fontSize: "1.8vw" }}>Protein vs Fat Distribution</h2>
           <div className="chart-container">
             <ResponsiveContainer width="50%" height={300}>
               <PieChart>
