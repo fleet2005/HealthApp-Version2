@@ -1,13 +1,20 @@
 import React from "react";
 import "./css/flex.css";
+import JWT from "/assets/JWT.png"; 
+import Chatbot from "/assets/Chatbot.png";
+import Bcrypt from "/assets/Bcrypt.png";
+import Markov from "/assets/Markov.png";
+import Charting from "/assets/Charting.png"
+import History from "/assets/History.png"
+
 
 const items = [
-  { text: "Bcrypt", image: "https://via.placeholder.com/100", hoverText: "New Text" },
-  { text: "JWT", image: "https://via.placeholder.com/100", hoverText: "New Text" },
-  { text: "Markov", image: "https://via.placeholder.com/100", hoverText: "New Text" },
-  { text: "Chatbot", image: "https://via.placeholder.com/100", hoverText: "New Text" },
-  { text: "History", image: "https://via.placeholder.com/100", hoverText: "New Text" },
-  { text: "Charting", image: "https://via.placeholder.com/100", hoverText: "New Text" },
+  { text: "Bcrypt", image: Bcrypt, hoverText: "New Text" },
+  { text: "JWT", image: JWT, hoverText: "New Text" },
+  { text: "Markov", image: Markov, hoverText: "New Text" },
+  { text: "Chatbot", image: Chatbot, hoverText: "New Text" },
+  { text: "History", image: History, hoverText: "New Text" },
+  { text: "Charting", image: Charting, hoverText: "New Text" },
 ];
 
 const FlexContainer = () => {
