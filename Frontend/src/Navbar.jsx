@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import LogoutIcon from "/assets/Logout.png";
 import "./css/homePage.css";
 
 const Navbar = () => {
@@ -19,12 +20,13 @@ const Navbar = () => {
             <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/homepage"); }}>Overview</a></li>
             <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/exercise"); }}>Exercise Monitoring</a></li>
             <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/bmi"); }}>BMI Calculator</a></li>
-            <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/nutrient"); }}> Nutrient Tracking</a>
-  </li>
+            <li><a href="#" onClick={(e) => { e.preventDefault(); navigate("/nutrient"); }}> Nutrient Tracking</a></li>
           </ul>
 
-          <span style={{marginLeft : "3vw", fontSize :"1.5vw"}}>
-            <a href="/" onClick={handleLogout}>Logout</a>  
+          <span style={{ marginLeft: "3vw", fontSize: "1.5vw", display: "flex", alignItems: "center" }}>
+            <a href="/" onClick={handleLogout} style={{ display: "flex", alignItems: "center", textDecoration: "none", color: "inherit" }}>
+                <img src={LogoutIcon} alt="Logout" style={{ width: "5vw", height: "5vw", marginRight: "0.5vw" }} />
+            </a>
           </span>
         </nav>
       </div>

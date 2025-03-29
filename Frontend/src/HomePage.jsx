@@ -8,6 +8,8 @@ import ChatBot from "./chatbot/chatbot/ChatBot.jsx";
 import Slider from "./Slider.jsx";
 import FlexContainer from "./FlexContainer.jsx";
 import Tips from "./Tips.jsx"
+import LogoutIcon from "/assets/Logout.png";
+
 
 const HomePage = () => {
   const navigate = useNavigate();  
@@ -93,8 +95,10 @@ const HomePage = () => {
               </a>
             </li>
           </ul>
-          <span style={{ marginLeft: "3vw", fontSize: "1.5vw" }}>
-            <a href="/" onClick={handleLogout}>Logout</a>  
+          <span style={{ marginLeft: "3vw", fontSize: "1.5vw", display: "flex", alignItems: "center" }}>
+              <a href="/" onClick={handleLogout} style={{ display: "flex", alignItems: "center", textDecoration: "none", color: "inherit" }}>
+                  <img src={LogoutIcon} alt="Logout" style={{ width: "5vw", height: "5vw", marginRight: "0.5vw" }} />
+              </a>
           </span>
         </nav>
       </div>
