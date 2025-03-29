@@ -4,17 +4,16 @@ import JWT from "/assets/JWT.png";
 import Chatbot from "/assets/Chatbot.png";
 import Bcrypt from "/assets/Bcrypt.png";
 import Markov from "/assets/Markov.png";
-import Charting from "/assets/Charting.png"
-import History from "/assets/History.png"
-
+import Charting from "/assets/Charting.png";
+import History from "/assets/History.png";
 
 const items = [
-  { text: "Bcrypt", image: Bcrypt, hoverText: "New Text" },
-  { text: "JWT", image: JWT, hoverText: "New Text" },
-  { text: "Markov", image: Markov, hoverText: "New Text" },
-  { text: "Chatbot", image: Chatbot, hoverText: "New Text" },
-  { text: "History", image: History, hoverText: "New Text" },
-  { text: "Charting", image: Charting, hoverText: "New Text" },
+  { text: "Bcrypt", image: Bcrypt, hoverText: "Securely store and manage your health data." },
+  { text: "JWT", image: JWT, hoverText: "Keep your login sessions safe and secure." },
+  { text: "Markov", image: Markov, hoverText: "Analyze health trends and predictions with AI." },
+  { text: "Chatbot", image: Chatbot, hoverText: "Get instant health advice with our AI chatbot." },
+  { text: "History", image: History, hoverText: "Track your past workouts, meals, and progress." },
+  { text: "Charting", image: Charting, hoverText: "Visualize your health progress with charts." },
 ];
 
 const FlexContainer = () => {

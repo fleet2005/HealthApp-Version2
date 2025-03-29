@@ -68,15 +68,27 @@
     font-size: 1.2vw;
   }
   
-  /* Back of Card: reverse side with new text */
   .back {
     background-color: black; /* keep background black */
     transform: rotateY(180deg);
-  }
+    position: relative;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-shadow: -2px -2px 3px rgba(174, 10, 250, 0.3),  
+                2px -2px 3px rgba(174, 10, 250, 0.3);
+}
+
+
   .hover-text {
     font-size: 1.2vw;
     color: white;
-  }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
   
   /* Green glow on bottom */
   .item::after {
