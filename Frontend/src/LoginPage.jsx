@@ -1,5 +1,5 @@
 import "./css/loginPage.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -8,6 +8,7 @@ const LoginPage = () => {
     const [Email, SetEmail] = useState("");
     const [Password, SetPassword] = useState("");
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
     const [demoMessageVisible, setDemoMessageVisible] = useState(false);
     const navigate = useNavigate();
 
@@ -16,7 +17,7 @@ const LoginPage = () => {
     };
 
     const handleKeyPress = (e) => {
-        if (e.key === 'Enter') {
+        if (e.key === "Enter") {
             if (Visible) {
                 handleLogin(e);
             } else {
@@ -27,6 +28,9 @@ const LoginPage = () => {
 
     const handleLogin = async (e) => {
         e.preventDefault();
+        setLoading(true);
+        setError("");
+
         try {
             const response = await axios.post("https://health-app-version2-backend.vercel.app/signin", {
                 email: Email,
@@ -44,11 +48,16 @@ const LoginPage = () => {
         } catch (error) {
             setError("Invalid email or password");
             console.error("Login error:", error);
+        } finally {
+            setLoading(false);
         }
     };
 
     const handleRegister = async (e) => {
         e.preventDefault();
+        setLoading(true);
+        setError("");
+
         try {
             const response = await axios.post("https://health-app-version2-backend.vercel.app/signup", {
                 email: Email,
@@ -63,7 +72,9 @@ const LoginPage = () => {
             }
         } catch (error) {
             setError("Error occurred");
-            console.error(error);
+            console.error("Registration error:", error);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -76,6 +87,26 @@ const LoginPage = () => {
         SetPassword("ungamma");
         setDemoMessageVisible(true);
     };
+
+    // Hide error message after 7 seconds
+    useEffect(() => {
+        if (error) {
+            const timer = setTimeout(() => {
+                setError("");
+            }, 7000);
+            return () => clearTimeout(timer);
+        }
+    }, [error]);
+
+    // Hide demo message after 7 seconds
+    useEffect(() => {
+        if (demoMessageVisible) {
+            const timer = setTimeout(() => {
+                setDemoMessageVisible(false);
+            }, 7000);
+            return () => clearTimeout(timer);
+        }
+    }, [demoMessageVisible]);
 
     return (
         <div className="login-page">
@@ -104,7 +135,8 @@ const LoginPage = () => {
 
                     {Visible ? (
                         <>
-                            <h2>Sign In</h2> <br />
+                            <h2>Sign In</h2>
+                            <br />
                             <label>Email Id:</label>
                             <input
                                 type="email"
@@ -126,22 +158,24 @@ const LoginPage = () => {
                             <button
                                 type="button"
                                 onClick={handleLogin}
+                                disabled={loading}
                                 style={{
-                                    backgroundColor: "#28A745",
+                                    backgroundColor: loading ? "#6C757D" : "#28A745",
                                     color: "white",
                                     marginBottom: "-1vw",
                                     fontSize: "1.2vw",
                                     width: "8vw",
                                     border: "none",
                                     borderRadius: "1vw",
-                                    cursor: "pointer",
+                                    cursor: loading ? "not-allowed" : "pointer",
                                     transition: "background-color 0.3s",
                                 }}
-                                onMouseOver={(e) => (e.target.style.backgroundColor = "#45a049")}
-                                onMouseOut={(e) => (e.target.style.backgroundColor = "#4CAF50")}
+                                onMouseOver={(e) => !loading && (e.target.style.backgroundColor = "#45a049")}
+                                onMouseOut={(e) => !loading && (e.target.style.backgroundColor = "#4CAF50")}
                             >
                                 Login
                             </button>
+                            
                             <br />
                             <button
                                 type="button"
@@ -167,6 +201,7 @@ const LoginPage = () => {
                                     Please Click Login
                                 </p>
                             )}
+                            {error && <p className="error-message">{error}</p>}
                         </>
                     ) : (
                         <>
@@ -193,8 +228,9 @@ const LoginPage = () => {
                             <button
                                 type="button"
                                 onClick={handleRegister}
+                                disabled={loading}
                                 style={{
-                                    backgroundColor: "#28A745",
+                                    backgroundColor: loading ? "#6C757D" : "#28A745",
                                     color: "white",
                                     marginBottom: "-1vw",
                                     height: "3.5vw",
@@ -202,16 +238,16 @@ const LoginPage = () => {
                                     width: "8.5vw",
                                     border: "none",
                                     borderRadius: "1vw",
-                                    cursor: "pointer",
+                                    cursor: loading ? "not-allowed" : "pointer",
                                     transition: "background-color 0.3s",
                                 }}
-                                onMouseOver={(e) => (e.target.style.backgroundColor = "#45a049")}
-                                onMouseOut={(e) => (e.target.style.backgroundColor = "#4CAF50")}
+                                onMouseOver={(e) => !loading && (e.target.style.backgroundColor = "#45a049")}
+                                onMouseOut={(e) => !loading && (e.target.style.backgroundColor = "#4CAF50")}
                             >
                                 Register
                             </button>
+                            
                             <br />
-                            {/* The demo button here only switches to sign in without autofilling in the register section */}
                             <button
                                 type="button"
                                 onClick={fillWithDemoCredentials}
@@ -236,9 +272,17 @@ const LoginPage = () => {
                                     Please Click Login
                                 </p>
                             )}
+                            {error && <p className="error-message">{error}</p>}
                         </>
                     )}
                 </form>
+
+                {/* Loading overlay */}
+                {loading && (
+                    <div className="spinner-overlay">
+                        <div className="spinner"></div>
+                    </div>
+                )}
             </div>
         </div>
     );
