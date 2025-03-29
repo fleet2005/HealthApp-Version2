@@ -72,7 +72,7 @@ const HomePage = () => {
       <div className="header">
         <nav className="navbar">
           <img src="/assets/favicon.png" alt="Logo" />
-          <span style={{ marginRight: '1vw' }}> HealthApp </span>
+          <span style={{ marginRight: '3vw' }}> HealthApp </span>
           <ul className="Items">
             <li>
               <a href="#" onClick={(e) => { e.preventDefault(); navigate("/homepage"); }}>

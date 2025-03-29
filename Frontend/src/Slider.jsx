@@ -3,19 +3,28 @@ import "./css/slider.css";
 
 const slides = [
   { 
-    title: "Track Food Nutrients", 
+    title: "Track Your Food Nutrients", 
     description: "Log your daily meals easily with predictive help", 
-    image: "/assets/Food.jpg" 
+    image: "/assets/Food.jpg",
+    descImage: "/assets/Nutri.png"
   },
   { 
     title: "Monitor Your BMI & Health Trends", 
     description: "Stay on top of your weight goals with real-time BMI analysis", 
-    image: "/assets/BMI.jpg" 
+    image: "/assets/BMI.jpg",
+    descImage: "/assets/Bmii.png"
   },
   { 
-    title: "Stay Active with Exercise Tracking", 
+    title: "Stay Active With Exercise Tracking", 
     description: "Set fitness goals, track workouts, and improve your lifestyle", 
-    image: "/assets/Exercise.jpg" 
+    image: "/assets/Exercise.jpg",
+    descImage: "/assets/Exercisii.png"
+  },
+  {
+    title: "Get Your Queries Resolved With Chatbot", 
+    description: "Set fitness goals, track workouts, and improve your lifestyle", 
+    image: "/assets/ChatbotBG.png",
+    descImage: "/assets/Chatii.png"
   },
 ];
 
@@ -43,7 +52,7 @@ const Slider = () => {
             <div className="description-container">
               <img
                 className="desc-image"
-                src="https://via.placeholder.com/150"
+                src={slide.descImage}
                 alt="description"
               />
               <p>{slide.description}</p>
