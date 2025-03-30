@@ -19,6 +19,15 @@ const HomePage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
+    const hasAlertShown = sessionStorage.getItem("alertShown");
+  
+    if (!hasAlertShown) {
+      alert("The Next Food Prediction and Chatbot may take up to 1 minute to respond to the initial request, as the server (Django backend deployment) needs to wake up from a cold start.");
+      sessionStorage.setItem("alertShown", "true");
+    }
+  }, []);
+  
+  useEffect(() => {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem("token");
@@ -64,6 +73,7 @@ const HomePage = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");  
+    sessionStorage.removeItem("alertShown");
     navigate("/");  
   };
 
