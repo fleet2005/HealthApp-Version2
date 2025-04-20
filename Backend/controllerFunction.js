@@ -111,36 +111,100 @@ const getLast7DaysData = asyncHandler(async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
-
 const addOrUpdateUserData = asyncHandler(async (req, res) => {
-    const { email, newEntry } = req.body;  // Make sure newEntry is in the request body
+    const { email, newEntry } = req.body;
 
-    if(req.user.user.email!=email) return res.status(404).json({message : "Unauthorised Access"});
-    
+    if (req.user.user.email !== email)
+        return res.status(403).json({ message: "Unauthorized Access" });
+
     try {
-        // Find the user by email
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);  // Normalize to midnight
+
         let userData = await PrevDataModel.findOne({ email });
 
         if (!userData) {
-            // If user doesn't exist, create a new document with the first entry
+            
+            console.log('No user data found. Creating new entry...');
             userData = new PrevDataModel({
                 email,
-                entries: [newEntry],  // Add the new entry to the entries array
+                entries: [{
+                    date: new Date(newEntry.date),
+                    nutrition: newEntry.nutrition,
+                    exercise: newEntry.exercise
+                }]
             });
         } else {
-            // If user exists, push the new entry into the entries array
-            userData.entries.push(newEntry);
+            let entries = userData.entries;
+
+            console.log('User data found. Current entries:', entries);
+
+            // Safely compare dates and find if today's entry exists
+            const todayIndex = entries.findIndex(entry => {
+                if (!entry.date) return false;
+                const entryDate = new Date(entry.date);
+                entryDate.setHours(0, 0, 0, 0);
+                return entryDate.getTime() === new Date(newEntry.date).setHours(0, 0, 0, 0);
+            });
+
+            console.log('Today Index:', todayIndex);
+
+            if (todayIndex !== -1) {
+                // Update existing entry for that date
+                console.log('Updating existing entry for today...');
+                const existingEntry = entries[todayIndex];
+
+                // Sum the nutrition and exercise values
+                existingEntry.nutrition.consumed_energy_kcal += newEntry.nutrition.consumed_energy_kcal;
+                existingEntry.nutrition.consumed_protein_g += newEntry.nutrition.consumed_protein_g;
+                existingEntry.nutrition.consumed_fat_g += newEntry.nutrition.consumed_fat_g;
+                existingEntry.exercise.total_calories_burned += newEntry.exercise.total_calories_burned;
+            } else {
+                // Add a new entry if no existing entry for that date
+                console.log('Adding new entry for today...');
+                entries.push({
+                    date: new Date(newEntry.date),
+                    nutrition: newEntry.nutrition,
+                    exercise: newEntry.exercise
+                });
+            }
+
+            // Keep only 7 unique days (latest first)
+            const uniqueByDate = {};
+            entries.forEach(entry => {
+                if (entry.date) {
+                    const dateKey = new Date(entry.date).toISOString().split('T')[0];
+                    uniqueByDate[dateKey] = entry;
+                }
+            });
+
+            console.log('Unique entries by date:', uniqueByDate);
+
+            // Get the entries sorted by the most recent, keeping only the last 7 unique days
+            const sortedUniqueEntries = Object.values(uniqueByDate)
+                .sort((a, b) => new Date(b.date) - new Date(a.date))
+                .slice(0, 7) // Keep only the last 7 days
+                .reverse(); // Optional: reverse to make it oldest to newest
+
+            console.log('Sorted unique entries (last 7 days):', sortedUniqueEntries);
+
+            // Set the updated entries back to the user data
+            userData.entries = sortedUniqueEntries;
         }
 
-        // Save the document and ensure we only keep 7 entries (handled by schema)
+        // Save the user data after updating
         await userData.save();
-        
-        res.status(200).json({ message: 'User data updated or created successfully!' });
+        console.log('Data saved successfully.');
+
+        res.status(200).json({ message: "User data updated or created successfully!" });
+
     } catch (error) {
-        console.error('Error adding/updating user data:', error);
-        res.status(500).json({ message: 'Error adding/updating user data', error: error.message });
+        console.error("Error adding/updating user data:", error);
+        res.status(500).json({ message: "Error adding/updating user data", error: error.message });
     }
 });
+
+
 
  
 module.exports = { signin, signup, nutrient, exercise, getLast7DaysData, addOrUpdateUserData};

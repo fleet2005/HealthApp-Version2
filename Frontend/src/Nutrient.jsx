@@ -121,8 +121,9 @@ function Nutrient() {
     }
 
     // Construct the new entry including exercise data.
+    const today = new Date();
     const newEntry = {
-      date: new Date().toISOString(),
+      date: today.toLocaleDateString('en-CA'),
       nutrition: {
         consumed_energy_kcal: totalCalories,
         consumed_protein_g: totalProtein,
@@ -132,6 +133,7 @@ function Nutrient() {
         total_calories_burned: exerciseData.total_calories_burned || 0
       }
     };
+    console.log(newEntry.date);
     console.log("[SUBMIT] New entry to be submitted:", newEntry);
 
     try {

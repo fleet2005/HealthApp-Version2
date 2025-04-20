@@ -16,7 +16,7 @@ const PrevDataSchema = new mongoose.Schema({
             },
         },
     ],
-});
+}, {timestamps: true});
 
 // Pre-save hook to ensure that only 7 entries are stored (keeps the latest 7)
 PrevDataSchema.pre('save', function (next) {
