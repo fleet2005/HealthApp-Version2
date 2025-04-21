@@ -72,7 +72,7 @@ function Exercise() {
                 }
 
                 const formattedData = response.data.map((item, index) => ({
-                    entry: `Entry ${index + 1}`,
+                    Day: `Day ${index + 1}`,
                     burnedCalories: item.exercise.total_calories_burned,
                 }));
 
@@ -106,7 +106,7 @@ function Exercise() {
                     <ResponsiveContainer width="100%" height={300}>
                         <BarChart data={chartData}>
                             <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="entry" />
+                            <XAxis dataKey="Day" />
                             <YAxis />
                             <Tooltip />
                             <Legend />

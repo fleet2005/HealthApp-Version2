@@ -94,7 +94,7 @@ function Nutrient() {
       // Parse the weight as a number. Default to 0 if invalid.
       const weight = parseFloat(field.weight) || 0;
 
-      // If either food name is missing or weight is zero, skip the entry.
+      // If either food name is missing or weight is zero, skip the Day.
       if (!food || weight <= 0) {
         console.warn(`[SUBMIT] Skipping food "${food}" with weight "${field.weight}"`);
         continue;
@@ -120,7 +120,7 @@ function Nutrient() {
       }
     }
 
-    // Construct the new entry including exercise data.
+    // Construct the new Day including exercise data.
     const today = new Date();
     const newEntry = {
       date: today.toLocaleDateString('en-CA'),
@@ -134,7 +134,7 @@ function Nutrient() {
       }
     };
     console.log(newEntry.date);
-    console.log("[SUBMIT] New entry to be submitted:", newEntry);
+    console.log("[SUBMIT] New Day to be submitted:", newEntry);
 
     try {
       const submissionResponse = await axios.post(
@@ -154,12 +154,15 @@ function Nutrient() {
       const repl = document.getElementById('replace');
       if (repl) {
         repl.innerHTML = `
-          <p><strong>Total Calories:</strong> ${totalCalories.toFixed(2)} kcal</p>
-          <p><strong>Total Protein:</strong> ${totalProtein.toFixed(2)} g</p>
-          <p><strong>Total Fat:</strong> ${totalFat.toFixed(2)} g</p>
-          <p><strong>Total Exercise Calories:</strong> ${exerciseData.total_calories_burned} kcal</p>
+          <div style="text-align: center;">
+            <p style="color: white;"><strong>Total Calories:</strong> ${totalCalories.toFixed(2)} kcal</p>
+            <p style="color: white;"><strong>Total Protein:</strong> ${totalProtein.toFixed(2)} g</p>
+            <p style="color: white;"><strong>Total Fat:</strong> ${totalFat.toFixed(2)} g</p>
+            <p style="color: white;"><strong>Total Exercise Calories:</strong> ${exerciseData.total_calories_burned} kcal</p>
+          </div>
         `;
       }
+      
     } catch (error) {
       console.error("[SUBMIT] Error during data submission:", error);
       alert("Failed to submit data. Please try again.");
@@ -273,9 +276,9 @@ function Nutrient() {
           setIsNewUser(true);
           return;
         }
-        const formattedCalorieData = response.data.map((entry, index) => ({
-          name: `Entry ${index + 1}`,
-          Calories: entry.nutrition.consumed_energy_kcal
+        const formattedCalorieData = response.data.map((Day, index) => ({
+          name: `Day ${index + 1}`,
+          Calories: Day.nutrition.consumed_energy_kcal
         }));
         setCalorieData(formattedCalorieData);
         console.log("[DATA] Calorie data set:", formattedCalorieData);

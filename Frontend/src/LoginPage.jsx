@@ -48,6 +48,7 @@ const LoginPage = () => {
         } catch (error) {
             setError("Invalid email or password");
             console.error("Login error:", error);
+            alert("Invalid email or password");
         } finally {
             setLoading(false);
         }
@@ -73,6 +74,7 @@ const LoginPage = () => {
         } catch (error) {
             setError("Error! Already Registered, Please Login");
             console.error("Registration error:", error);
+            alert("Error! Already Registered, Please Login");
         } finally {
             setLoading(false);
         }
