@@ -8,7 +8,12 @@ const cors = require('cors');
 const app= express();
 const port = process.env.PORT|| 5001;
 
-app.use(cors());
+app.use(cors({
+    origin: 'https://health-app-version2-ke87.vercel.app',  
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+  }));
+
 connectDB();
 
 app.use(express.json());
