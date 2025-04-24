@@ -56,7 +56,7 @@ function Bmi() {
         </form>
       </div>
 
-      <div id="replace2"></div>
+      <div id="replace2" style={{color:"white"}}></div>
 
       <div className="bmi-table-container">
         <h2>BMI Categories and Weight Status Mapping</h2>
