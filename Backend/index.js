@@ -9,7 +9,7 @@ const app= express();
 const port = process.env.PORT|| 5001;
 
 app.use(cors({
-    origin: true, 
+    origin: 'https://health-app-version2-ke87.vercel.app', 
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
   }));
