@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
-import './css/ChatBot.css';
+import './css/chatbot.css';
 
 const ChatBot = ({ isVisible, onToggle }) => {
     const [messages, setMessages] = useState([]);
