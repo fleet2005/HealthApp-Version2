@@ -17,7 +17,7 @@ import {
 import axios from "axios";
 import NewUser from "./components/NewUser.jsx";
 import debounce from 'lodash/debounce';
-import ChatBot from "./chatbot/chatbot/ChatBot.jsx"; // Import ChatBot component
+import ChatBot from "./Chatbot.jsx"; // Import ChatBot component
 
 function Nutrient() {
   // State declarations

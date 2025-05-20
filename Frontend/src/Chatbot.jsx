@@ -32,7 +32,7 @@ const ChatBot = ({ isVisible, onToggle }) => {
             // Make API request to backend
             const response = await axios({
                 method: 'post',
-                url: 'https://healthapp-chatbot-3.onrender.com/chatbot/',
+                url: 'https://health-app-version2-chatbotendpoint.vercel.app/',
                 data: {
                     lang: "English",
                     detail: inputMessage

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Navbar from './Navbar.jsx';
 import './css/bmi.css';  // Import the new CSS file
-import ChatBot from "./chatbot/chatbot/ChatBot.jsx"; // Import the ChatBot component
+import ChatBot from "./Chatbot.jsx"; // Import the ChatBot component
 
 function Bmi() {
   const [height, setHeight] = useState(null);

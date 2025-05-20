@@ -4,7 +4,7 @@ import axios from "axios";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import "./css/homePage.css";
 import NewUser from "./components/NewUser.jsx";
-import ChatBot from "./chatbot/chatbot/ChatBot.jsx"; 
+import ChatBot from "./Chatbot.jsx";
 import Slider from "./Slider.jsx";
 import FlexContainer from "./FlexContainer.jsx";
 import Tips from "./Tips.jsx"

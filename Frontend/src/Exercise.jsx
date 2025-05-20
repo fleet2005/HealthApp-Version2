@@ -3,7 +3,7 @@ import Navbar from "./Navbar.jsx";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer } from "recharts";
 import axios from "axios";
 import NewUser from "./components/NewUser.jsx";
-import ChatBot from "./chatbot/chatbot/ChatBot.jsx";
+import ChatBot from "./Chatbot.jsx";
 import "./css/exercise.css";
 
 function Exercise() {
