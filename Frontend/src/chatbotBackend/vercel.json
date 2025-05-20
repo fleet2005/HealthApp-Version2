@@ -8,7 +8,11 @@
   ],
   "routes": [
     {
-      "src": "/chatbot/(.*)",
+      "src": "/chatbot",
+      "dest": "dist/server.js"
+    },
+    {
+      "src": "/chatbot/",
       "dest": "dist/server.js"
     },
     {

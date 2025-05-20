@@ -70,8 +70,9 @@ const handleChat = async (req: Request, res: Response): Promise<void> => {
 app.get('/', (req: Request, res: Response) => {
   res.json({ message: 'Chatbot API is running' });
 });
+
+app.post('/chatbot', handleChat);
 app.post('/chatbot/', handleChat);
-console.log('Routes configured');
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
