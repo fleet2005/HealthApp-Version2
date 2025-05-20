@@ -8,8 +8,7 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "dev": "node --loader ts-node/esm server.ts",
-    "watch": "tsc -w",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "tsc -w"
   },
   "author": "Vishal Srinivasan",
   "license": "MIT",
@@ -25,5 +24,8 @@
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
